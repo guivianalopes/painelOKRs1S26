@@ -352,97 +352,140 @@ body { font-family: 'Figtree', Arial, sans-serif; background: var(--bg); color: 
 ═══════════════════════════════ */
 @media (max-width: 768px) {
 
-  /* HEADER */
-  .header { padding: 12px 16px; flex-wrap: wrap; gap: 10px; }
-  .header::before, .header::after { display: none; }
-  .h-logo { padding-right: 16px; margin-right: 16px; }
-  .h-logo-name { font-size: 16px; }
-  .h-title h1 { font-size: 12px; }
-  .h-title p  { font-size: 9px; }
-  .h-legend   { display: none; }
-
-  /* JORNADA */
-  .journey { flex-wrap: wrap; gap: 8px; padding: 8px 16px; }
-  .j-label { font-size: 8px; }
-  .j-track { width: 100%; }
-  .j-arrow { padding: 0 4px; font-size: 11px; }
-  .j-name  { font-size: 9px; }
-  .j-sub   { font-size: 7px; }
-  .j-pilares { display: none; }
-
-  /* VIEW TABS */
-  .view-tabs-bar { padding: 0 16px; }
-  .vtab { padding: 9px 14px; font-size: 10px; }
-
-  /* MAIN */
-  .main { padding: 10px 12px 20px; }
-
-  /* HERO ROW — stack vertically */
-  .hero-row {
-    grid-template-columns: 1fr !important;
-    grid-template-rows: auto !important;
+  /* ── HEADER ── */
+  .header {
+    padding: 10px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
   }
-  .nsm-hero { grid-row: auto !important; }
+  .header::before, .header::after { display: none; }
+  .h-logo {
+    border-right: none; margin-right: 0;
+    padding-right: 0; padding-bottom: 6px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    width: 100%;
+    display: flex; align-items: center; gap: 10px;
+    flex-direction: row;
+  }
+  .h-logo-name { font-size: 18px; line-height: 1; }
+  .h-logo-tag  { font-size: 8px; }
+  .h-title     { width: 100%; }
+  .h-title h1  { font-size: 13px; }
+  .h-title p   { font-size: 9px; color: rgba(255,255,255,0.35); }
+  .h-legend    { display: none; }
+
+  /* ── JORNADA — ocultar no mobile, muito densa ── */
+  .journey { display: none; }
+
+  /* ── VIEW TABS ── */
+  .view-tabs-bar { padding: 0 12px; }
+  .vtab { padding: 10px 16px; font-size: 11px; }
+
+  /* ── MAIN ── */
+  .main { padding: 10px 10px 24px; }
+
+  /* ── HERO ROW — coluna única ── */
+  .hero-row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px;
+  }
+  .nsm-hero  { width: 100%; }
   .hero-right { width: 100%; }
+  .nsm-num   { font-size: 44px; }
+  .nsm-hero::before { font-size: 80px; }
+
+  /* Fat hero */
+  .fat-hero { padding: 14px 14px; }
+  .fat-title { font-size: 12px; margin-bottom: 2px; }
+  .fat-sub   { font-size: 9px; margin-bottom: 10px; }
+  .fat-m-val { font-size: 22px !important; }
+  .fat-m-lbl { font-size: 8px; }
+  .fat-m-sub { font-size: 8px; }
+  #fat-months {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  /* 3-col metric grid inside fat → 2 cols */
+  .fat-hero > div[style*="grid-template-columns:1fr 1fr 1fr"] {
+    display: grid;
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* Contadores — linha horizontal 3+2 */
   .counters-col {
     display: grid !important;
     grid-template-columns: repeat(3, 1fr) !important;
     gap: 6px;
   }
-  .nsm-num { font-size: 42px; }
+  .ct { padding: 8px 10px; }
+  .ct-n2 { font-size: 20px; }
+  .ct-lbl { font-size: 9px; }
 
-  /* FAT HERO */
-  .fat-hero { padding: 14px; }
-  .fat-title { font-size: 12px; }
-  .fat-m-val { font-size: 22px !important; }
-  #fat-months { grid-template-columns: repeat(2,1fr) !important; }
+  /* ── SECTION LABELS ── */
+  .sec { font-size: 8.5px; }
 
-  /* MONTH GRID inside fat card */
-  [style*="grid-template-columns:1fr 1fr 1fr"] {
-    grid-template-columns: 1fr 1fr !important;
+  /* ── DIAGNÓSTICO — 1 coluna ── */
+  .diag { grid-template-columns: 1fr !important; gap: 8px; }
+  .dc ul li { font-size: 10px; }
+
+  /* ── ÁREA SECTIONS — 2 colunas ── */
+  .area-section-header {
+    font-size: 9px;
+    padding: 7px 10px;
+    flex-wrap: wrap;
+    line-height: 1.4;
   }
-
-  /* DIAGNÓSTICO */
-  .diag { grid-template-columns: 1fr !important; }
-
-  /* ÁREA SECTIONS */
+  .area-section-header .ah-sub { display: none; }
   .area-section-body.cols-4,
   .area-section-body.cols-3,
-  .area-section-body[style*="grid-template-columns:1fr 1fr 1fr 1fr 1fr"] {
+  .area-section-body[style*="grid-template-columns"] {
     grid-template-columns: 1fr 1fr !important;
   }
-  .area-section-header { font-size: 9.5px; padding: 7px 12px; }
-  .area-section-header .ah-sub { display: none; }
-
-  /* BOTTOM ROW */
-  .bottom-row { grid-template-columns: 1fr !important; }
-
-  /* TABLE VIEW */
-  .tv-toolbar { flex-direction: column; align-items: flex-start; }
-  .area-filter { gap: 4px; }
-  .af-btn { font-size: 9.5px; padding: 3px 10px; }
-
-  /* SECTION LABELS */
-  .sec { font-size: 8px; }
-
-  /* CARD */
-  .acard { min-width: 0; }
+  .acard  { min-width: 0; }
   .ac-name { font-size: 9px; }
-  .on { font-size: 9.5px; }
-  .ov { font-size: 12px; }
+  .cb  { padding: 7px 10px 9px; }
+  .on  { font-size: 9px; }
+  .ov  { font-size: 12px; }
+  .p   { font-size: 8px; }
+  .meta-jul-line { font-size: 8px; }
+  .badge { font-size: 8px; padding: 2px 5px; }
 
+  /* ── BOTTOM ROW — 1 coluna ── */
+  .bottom-row { grid-template-columns: 1fr !important; gap: 10px; }
+  .km { font-size: 10px; }
+  .sbd { font-size: 10px; }
+
+  /* ── TABLE VIEW ── */
+  .tv-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .area-filter { gap: 4px; }
+  .af-btn { font-size: 9px; padding: 3px 9px; }
+  .table-scroll { -webkit-overflow-scrolling: touch; }
+  .okr-table { font-size: 10px; }
+  .okr-table th, .okr-table td { padding: 6px 8px; }
+  .td-metrica { max-width: 140px; font-size: 9.5px; }
+
+  /* ── FOOTER ── */
+  .footer { flex-direction: column; gap: 4px; padding: 10px 16px; }
+  .footer p { font-size: 8.5px; }
 }
 
-@media (max-width: 400px) {
+/* ── iPhone SE / mini (< 390px) ── */
+@media (max-width: 390px) {
   .area-section-body.cols-4,
-  .area-section-body.cols-3 {
+  .area-section-body.cols-3,
+  .area-section-body[style*="grid-template-columns"] {
     grid-template-columns: 1fr !important;
   }
   .counters-col {
     grid-template-columns: repeat(2, 1fr) !important;
   }
-  .h-logo-name { font-size: 14px; }
-  .nsm-num { font-size: 36px; }
+  .nsm-num { font-size: 38px; }
+  #fat-months { grid-template-columns: 1fr 1fr !important; }
 }
 </style>
 </head>
@@ -456,7 +499,7 @@ body { font-family: 'Figtree', Arial, sans-serif; background: var(--bg); color: 
   </div>
   <div class="h-title">
     <h1>OKRs 1S26 — Painel Executivo de Liderança</h1>
-    <p>Sheet: Consolidado &nbsp;·&nbsp; Resultados até Abril / 2026 &nbsp;·&nbsp; Reunião de Liderança &nbsp;·&nbsp; Uso interno</p>
+    <p>Resultados até Abril / 2026</p>
   </div>
   <div class="h-legend">
     <div class="legend-row">
@@ -1595,7 +1638,7 @@ body { font-family: 'Figtree', Arial, sans-serif; background: var(--bg); color: 
 
 <!-- FOOTER -->
 <div class="footer">
-  <p><strong>Oficina Brasil</strong> &nbsp;·&nbsp; OKR Dashboard 1S26 V6 &nbsp;·&nbsp; Resultados até Abril 2026 &nbsp;·&nbsp; Uso interno — Reunião de Liderança</p>
+  <p><strong>Oficina Brasil</strong> &nbsp;·&nbsp; OKRs 1S26 &nbsp;·&nbsp; Resultados até Abril / 2026</p>
   <p>Identidade: Guia de Marca OFBR v01 &nbsp;·&nbsp; Fonte: Consolidado · OFBR_Planejamento_1s26 · <strong>Última atualização: Abril 2026</strong></p>
 </div>
 
