@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OKRs 1S26 · Oficina Brasil</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --azul:   #18328a;
+  --verde:  #90f252;
+  --turq:   #00b7a4;
+  --escuro: #00134e;
+  --claro:  #daf7ef;
+  --bg:     #f0f2f8;
+  --white:  #ffffff;
+  --border: #dde2ef;
+  --txt:    #00134e;
+  --mid:    #3d5280;
+  --soft:   #7080a8;
+  --g: #16a34a; --gb: #dcfce7; --gl: #86efac;
+  --y: #d97706; --yb: #fef3c7;
+  --r: #dc2626; --rb: #fee2e2;
+  --n: #94a3b8; --nb: #f1f5f9;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Figtree', Arial, sans-serif; background: var(--bg); color: var(--txt); font-size: 12px; line-height: 1.4; }
+
+/* ─── HEADER ─── */
+.header {
+  background: var(--escuro); padding: 0 28px;
+  display: flex; align-items: stretch;
+  border-bottom: 3px solid var(--verde);
+  position: relative; overflow: hidden;
+}
+.header::before { content:'OF'; position:absolute; left:-10px; top:-20px; font-weight:900; font-size:120px; line-height:1; color:rgba(24,50,138,0.5); pointer-events:none; letter-spacing:-6px; }
+.header::after  { content:'BR'; position:absolute; left:100px; top:-20px; font-weight:900; font-size:120px; line-height:1; color:rgba(24,50,138,0.35); pointer-events:none; letter-spacing:-6px; }
+.h-logo { padding:14px 24px 14px 0; border-right:1px solid rgba(255,255,255,0.08); margin-right:24px; display:flex; flex-direction:column; justify-content:center; position:relative; z-index:1; }
+.h-logo-name { font-weight:900; font-size:20px; line-height:1; color:var(--verde); text-transform:uppercase; }
+.h-logo-tag  { font-size:8.5px; font-weight:500; color:var(--turq); text-transform:uppercase; letter-spacing:1.5px; margin-top:3px; }
+.h-title { padding:14px 0; display:flex; flex-direction:column; justify-content:center; flex:1; position:relative; z-index:1; }
+.h-title h1 { font-weight:700; font-size:15px; color:#fff; }
+.h-title p  { font-size:10px; color:rgba(255,255,255,0.4); margin-top:2px; }
+.h-legend { padding:14px 0; display:flex; flex-direction:column; justify-content:center; align-items:flex-end; gap:5px; }
+.legend-row { display:flex; gap:10px; }
+.li { display:flex; align-items:center; gap:4px; font-size:9.5px; color:rgba(255,255,255,0.55); font-weight:500; }
+.dot { width:7px; height:7px; border-radius:50%; }
+.dg{background:#4ade80;} .dy{background:#fbbf24;} .dr{background:#f87171;} .dn{background:#94a3b8;}
+
+/* ─── JORNADA STRIP ─── */
+.journey {
+  background:var(--white); border-bottom:1px solid var(--border);
+  padding:10px 28px; display:flex; align-items:center; gap:20px;
+}
+.j-label { font-size:8.5px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--soft); white-space:nowrap; }
+.j-track { display:flex; align-items:center; gap:0; flex:1; }
+.j-step  { display:flex; align-items:center; gap:7px; flex:1; }
+.j-circle {
+  width:24px; height:24px; border-radius:50%; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:800; font-size:10px;
+  border:2px solid var(--border); background:var(--bg); color:var(--soft);
+}
+.j-step.active .j-circle { background:var(--azul); border-color:var(--azul); color:var(--verde); box-shadow:0 0 0 3px rgba(24,50,138,0.12); }
+.j-text { display:flex; flex-direction:column; }
+.j-sub  { font-size:8px; text-transform:uppercase; letter-spacing:.6px; color:var(--soft); }
+.j-name { font-size:10.5px; font-weight:700; color:var(--mid); }
+.j-step.active .j-name { color:var(--azul); }
+.j-step.active .j-sub  { color:var(--azul); }
+.j-arrow { color:var(--border); font-weight:700; font-size:13px; padding:0 8px; flex-shrink:0; }
+.j-pilares { display:flex; gap:5px; margin-left:12px; padding-left:16px; border-left:1px solid var(--border); }
+.j-pilar { background:var(--bg); border:1px solid var(--border); border-radius:20px; padding:3px 9px; font-size:9px; font-weight:600; color:var(--soft); white-space:nowrap; }
+
+/* ─── MONTH SELECTOR ─── */
+
+
+
+
+
+
+
+
+/* ─── MAIN ─── */
+.main { padding:14px 22px 28px; }
+
+/* ─── HERO ROW: NSM + FATURAMENTO + CONTADORES ─── */
+.hero-row {
+  display:grid;
+  grid-template-columns: 280px 1fr 190px;
+  gap:12px; margin-bottom:14px;
+  align-items: stretch;
+}
+.hero-right {
+  display:flex; flex-direction:column; gap:0;
+}
+.counters-col {
+  display:flex; flex-direction:column; gap:7px;
+}
+
+/* NSM CARD */
+.nsm-hero {
+  background:var(--azul); border-radius:10px; padding:20px;
+  display:flex; flex-direction:column; position:relative; overflow:hidden;
+}
+.nsm-hero::before { content:'★'; position:absolute; right:-6px; top:-10px; font-size:110px; color:rgba(144,242,82,0.07); pointer-events:none; line-height:1; }
+.nsm-top { display:flex; align-items:center; gap:9px; margin-bottom:12px; }
+.nsm-star { width:34px; height:34px; background:var(--verde); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:17px; flex-shrink:0; box-shadow:0 0 0 6px rgba(144,242,82,0.15); }
+.nsm-lbl { font-size:8.5px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--turq); }
+.nsm-sublbl { font-size:9.5px; font-weight:600; color:rgba(255,255,255,0.6); margin-top:1px; }
+.nsm-num { font-size:54px; font-weight:900; line-height:1; color:var(--verde); letter-spacing:-2px; margin-bottom:2px; }
+.nsm-num sup { font-size:18px; font-weight:600; color:rgba(255,255,255,0.4); margin-left:3px; vertical-align:super; }
+.nsm-meta { font-size:10px; color:rgba(255,255,255,0.5); margin-bottom:12px; }
+.nsm-meta strong { color:rgba(255,255,255,0.8); }
+.nsm-track-lbl { display:flex; justify-content:space-between; font-size:9px; color:rgba(255,255,255,0.35); margin-bottom:4px; }
+.nsm-track { height:6px; background:rgba(255,255,255,0.1); border-radius:3px; overflow:hidden; margin-bottom:10px; }
+.nsm-fill  { height:100%; background:var(--verde); border-radius:3px; transition:width .4s; }
+.nsm-pills { display:flex; gap:4px; flex-wrap:wrap; }
+.npill { font-size:9px; font-weight:600; padding:2px 7px; border-radius:3px; background:rgba(255,255,255,0.08); color:rgba(255,255,255,0.5); }
+.npill.ok  { background:rgba(144,242,82,0.15); color:var(--verde); }
+.npill.bad { background:rgba(248,113,113,0.15); color:#f87171; }
+
+/* FATURAMENTO CARD */
+.fat-hero {
+  background:var(--white); border-radius:10px; padding:20px;
+  border:1px solid var(--border); border-left:5px solid var(--azul);
+  display:flex; flex-direction:column;
+}
+.fat-lbl  { font-size:8.5px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--azul); margin-bottom:5px; }
+.fat-title{ font-weight:800; font-size:13px; color:var(--txt); margin-bottom:2px; }
+.fat-sub  { font-size:10px; color:var(--soft); margin-bottom:14px; }
+.fat-metrics { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:14px; }
+.fat-m { background:var(--bg); border-radius:7px; padding:10px 12px; }
+.fat-m-lbl { font-size:9px; font-weight:600; text-transform:uppercase; letter-spacing:.5px; color:var(--soft); margin-bottom:3px; }
+.fat-m-val { font-weight:900; font-size:28px; line-height:1; }
+.fat-m-val.ok   { color:var(--g); }
+.fat-m-val.warn { color:var(--y); }
+.fat-m-sub { font-size:9px; color:var(--soft); margin-top:2px; }
+
+/* progress */
+.pr { display:flex; align-items:center; gap:6px; margin-bottom:5px; }
+.pl { font-size:9.5px; color:var(--soft); min-width:62px; font-weight:500; }
+.pt { flex:1; height:5px; background:#e9eef8; border-radius:3px; overflow:hidden; }
+.pf { height:100%; border-radius:3px; transition:width .4s; }
+.pf-g{background:#4ade80;} .pf-y{background:#fbbf24;} .pf-r{background:#ef4444;} .pf-t{background:var(--turq);}
+.pp { font-size:10.5px; font-weight:700; min-width:38px; text-align:right; }
+.c-g{color:var(--g);} .c-y{color:var(--y);} .c-r{color:var(--r);} .c-t{color:var(--turq);} .c-a{color:var(--azul);} .c-s{color:var(--soft);}
+
+/* pills */
+.pills { display:flex; gap:3px; flex-wrap:wrap; margin-top:6px; }
+.p { font-size:9px; font-weight:600; padding:2px 6px; border-radius:3px; }
+.pg{background:#dcfce7;color:#16a34a;} .py{background:#fef3c7;color:#d97706;}
+.pr2{background:#fee2e2;color:#dc2626;} .pn{background:#f1f5f9;color:#94a3b8;}
+
+/* CONTADORES */
+.counters { display:flex; flex-direction:column; gap:6px; }
+.ct {
+  background:var(--white); border-radius:8px; padding:9px 14px;
+  border:1px solid var(--border);
+  display:flex; align-items:center; gap:10px; flex:1;
+  position:relative; overflow:hidden;
+}
+.ct::after { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; border-radius:8px 0 0 8px; }
+.ct.ct-t::after{background:var(--azul);}  .ct.ct-g::after{background:#4ade80;}
+.ct.ct-y::after{background:#fbbf24;}      .ct.ct-r::after{background:#ef4444;}
+.ct.ct-n::after{background:#94a3b8;}
+.ct-n2 { font-weight:800; font-size:24px; line-height:1; min-width:36px; }
+.ct.ct-t .ct-n2{color:var(--azul);}  .ct.ct-g .ct-n2{color:var(--g);}
+.ct.ct-y .ct-n2{color:var(--y);}     .ct.ct-r .ct-n2{color:var(--r);}
+.ct.ct-n .ct-n2{color:var(--n);}
+.ct-lbl { font-size:10px; color:var(--soft); font-weight:500; }
+
+/* ─── BADGE ─── */
+.badge { display:inline-flex; align-items:center; gap:3px; padding:2px 7px; border-radius:20px; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:.4px; white-space:nowrap; }
+.bg2{background:#dcfce7;color:#16a34a;border:1px solid #bbf7d0;}
+.by2{background:#fef3c7;color:#d97706;border:1px solid #fde68a;}
+.br2{background:#fee2e2;color:#dc2626;border:1px solid #fecaca;}
+.bn2{background:#f1f5f9;color:#94a3b8;border:1px solid #e2e8f0;}
+
+/* ─── SECTION LABEL ─── */
+.sec { font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:1.2px; color:var(--azul); margin-bottom:8px; display:flex; align-items:center; gap:8px; }
+.sec::after { content:''; flex:1; height:1px; background:var(--border); }
+
+/* ─── DIAGNÓSTICO ─── */
+.diag { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:14px; }
+.dc { background:var(--white); border-radius:8px; padding:11px 14px; border:1px solid var(--border); }
+.dc.dr-c{border-top:3px solid #ef4444;} .dc.dy-c{border-top:3px solid #fbbf24;} .dc.dg-c{border-top:3px solid #4ade80;}
+.dtt { font-weight:700; font-size:11px; margin-bottom:7px; }
+.dc.dr-c .dtt{color:#dc2626;} .dc.dy-c .dtt{color:#d97706;} .dc.dg-c .dtt{color:#16a34a;}
+.dc ul { list-style:none; }
+.dc ul li { font-size:10.5px; color:var(--mid); padding:3px 0 3px 10px; position:relative; border-bottom:1px solid var(--border); line-height:1.35; }
+.dc ul li:last-child { border-bottom:none; }
+.dc ul li::before { content:'›'; position:absolute; left:0; font-weight:700; }
+.dc.dr-c li::before{color:#ef4444;} .dc.dy-c li::before{color:#fbbf24;} .dc.dg-c li::before{color:#4ade80;}
+
+/* ─── ÁREA SECTIONS ─── */
+/* grid full = 4 cols, group = 4 cols mas com header de grupo */
+.area-section { margin-bottom:14px; }
+.area-section-header {
+  background: var(--azul); color: var(--verde);
+  border-radius:8px 8px 0 0; padding:7px 14px;
+  font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.8px;
+  display:flex; align-items:center; gap:8px;
+}
+.area-section-header .ah-icon { font-size:12px; }
+.area-section-header .ah-sub { color:rgba(255,255,255,0.5); font-weight:500; font-size:9px; text-transform:none; letter-spacing:0; margin-left:auto; }
+.area-section-body {
+  display:grid; gap:1px; background:var(--border);
+  border:1px solid var(--border); border-top:none;
+  border-radius:0 0 8px 8px; overflow:hidden;
+}
+.area-section-body.cols-4 { grid-template-columns:repeat(4,1fr); }
+.area-section-body.cols-2 { grid-template-columns:repeat(2,1fr); }
+.area-section-body.cols-3 { grid-template-columns:repeat(3,1fr); }
+
+/* individual area card inside section */
+.acard { background:var(--white); padding:10px 12px; }
+.ac-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; padding-bottom:6px; border-bottom:1px solid var(--border); }
+.ac-name { font-weight:700; font-size:10px; text-transform:uppercase; letter-spacing:.5px; color:var(--azul); }
+.or { padding:5px 0; border-bottom:1px solid var(--border); }
+.or:last-child { border-bottom:none; padding-bottom:0; }
+.ot { display:flex; align-items:flex-start; justify-content:space-between; gap:4px; margin-bottom:3px; }
+.on { font-size:10px; color:var(--soft); flex:1; line-height:1.3; }
+.ov { font-weight:800; font-size:13px; line-height:1; white-space:nowrap; }
+
+/* ─── SÍNTESE / JORNADA BOTTOM ─── */
+.bottom-row { display:grid; grid-template-columns:1.8fr 1fr; gap:12px; }
+.bc { background:var(--white); border-radius:8px; padding:14px 16px; border:1px solid var(--border); }
+.bc h4 { font-weight:700; font-size:11px; color:var(--txt); margin-bottom:9px; display:flex; align-items:center; gap:6px; }
+.bc-tag { background:var(--claro); color:var(--turq); font-size:9px; padding:1px 7px; border-radius:3px; font-weight:700; letter-spacing:.5px; }
+.jsteps { display:flex; border:1px solid var(--border); border-radius:7px; overflow:hidden; margin-bottom:10px; }
+.js { flex:1; padding:8px 10px; border-right:1px solid var(--border); text-align:center; background:var(--bg); }
+.js:last-child { border-right:none; }
+.jsl { font-size:9px; color:var(--soft); text-transform:uppercase; letter-spacing:.5px; }
+.jst { font-weight:700; font-size:11px; color:var(--mid); margin-top:2px; }
+.jss { font-size:9px; margin-top:2px; color:var(--soft); }
+.js.ja { background:#eff6ff; } .js.ja .jst{color:var(--azul);} .js.ja .jsl{color:var(--azul); font-weight:700;}
+.km { display:flex; align-items:baseline; gap:8px; padding:4px 0; border-bottom:1px solid var(--border); font-size:10.5px; }
+.km:last-child{border-bottom:none;}
+.kms{min-width:72px;font-weight:700;color:var(--azul);}
+.kmd{color:var(--mid);line-height:1.35;}
+.sb{padding:9px 11px;border-radius:7px;margin-bottom:7px;border-left:3px solid;}
+.sb:last-child{margin-bottom:0;}
+.sb.sg{background:#f0fdf4;border-color:#4ade80;} .sb.sy{background:#fefce8;border-color:#fbbf24;} .sb.sr{background:#fef2f2;border-color:#ef4444;}
+.sbt{font-weight:700;font-size:11px;margin-bottom:3px;}
+.sb.sg .sbt{color:#16a34a;} .sb.sy .sbt{color:#d97706;} .sb.sr .sbt{color:#dc2626;}
+.sbd{font-size:10.5px;color:var(--mid);line-height:1.4;}
+
+/* ─── FOOTER ─── */
+.footer { background:var(--escuro); padding:8px 28px; border-top:2px solid rgba(144,242,82,0.2); display:flex; justify-content:space-between; align-items:center; }
+.footer p{font-size:9px;color:rgba(255,255,255,0.3);}
+.footer strong{color:var(--verde);}
+
+/* hidden helper */
+.hidden { display:none !important; }
+
+/* Conecta dias mini-bars */
+.conecta-dias { display:flex; flex-direction:column; gap:4px; }
+.cd-row { display:flex; align-items:center; gap:5px; }
+.cd-day { font-size:9px; font-weight:700; color:var(--soft); min-width:22px; }
+.cd-track { flex:1; height:5px; background:#e9eef8; border-radius:3px; overflow:hidden; }
+.cd-fill { height:100%; background:#fbbf24; border-radius:3px; }
+.cd-fill-ok { background:#86efac; }
+.cd-val { font-size:10px; font-weight:700; min-width:32px; text-align:right; }
+.cd-pct { font-size:9px; color:var(--soft); min-width:28px; text-align:right; }
+
+/* ─── VIEW TABS ─── */
+.view-tabs-bar {
+  background: var(--escuro);
+  padding: 0 28px;
+  display: flex; align-items: center; gap: 4px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.vtab {
+  padding: 10px 20px; font-size: 11px; font-weight: 700;
+  color: rgba(255,255,255,0.45); cursor: pointer;
+  border-bottom: 3px solid transparent; margin-bottom: -1px;
+  transition: all .15s; white-space: nowrap;
+}
+.vtab:hover { color: rgba(255,255,255,0.75); }
+.vtab.vactive { color: var(--verde); border-bottom-color: var(--verde); }
+
+/* ─── TABLE VIEW ─── */
+.table-view { padding: 14px 22px 28px; display: none; }
+.table-view.visible { display: block; }
+.tv-toolbar {
+  background: var(--white); border-radius: 8px; padding: 10px 16px;
+  border: 1px solid var(--border); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+.tv-toolbar-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--soft); white-space: nowrap; }
+.area-filter { display: flex; gap: 5px; flex-wrap: wrap; }
+.af-btn {
+  padding: 4px 12px; border-radius: 20px; font-size: 10px; font-weight: 600;
+  cursor: pointer; border: 1.5px solid var(--border);
+  background: var(--bg); color: var(--soft); transition: all .12s;
+}
+.af-btn:hover { border-color: var(--azul); color: var(--azul); }
+.af-btn.af-active { background: var(--azul); color: var(--verde); border-color: var(--azul); }
+
+/* TABLE */
+.okr-table { width: 100%; border-collapse: collapse; background: var(--white); border-radius: 8px; overflow: hidden; border: 1px solid var(--border); font-size: 11px; }
+.okr-table thead tr { background: var(--escuro); }
+.okr-table thead th { padding: 9px 12px; text-align: left; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: rgba(255,255,255,0.6); white-space: nowrap; position: sticky; top: 0; z-index: 2; }
+.okr-table thead th:first-child { color: var(--verde); }
+.okr-table thead th.th-meta { color: var(--verde) !important; background: rgba(144,242,82,0.12); }
+.okr-table tbody tr { border-bottom: 1px solid var(--border); transition: background .1s; }
+.okr-table tbody tr:last-child { border-bottom: none; }
+.okr-table tbody tr:hover { background: #f8f9ff; }
+.okr-table tbody tr.tr-hidden { display: none; }
+.okr-table td { padding: 8px 12px; vertical-align: middle; }
+.okr-table td.td-meta-col { background: rgba(24,50,138,0.03); border-left: 2px solid rgba(24,50,138,0.08); }
+.table-scroll { overflow-x: auto; border-radius: 8px; }
+.td-area { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+.td-metrica { color: var(--mid); line-height: 1.3; max-width: 220px; }
+.td-meta-sem { font-size: 10px; font-weight: 600; color: var(--azul); white-space: nowrap; }
+.td-meta-jul { font-size: 9px; color: var(--soft); white-space: nowrap; }
+.td-real { font-weight: 800; font-size: 13px; white-space: nowrap; }
+.td-pct { white-space: nowrap; }
+.tbar-wrap { display: flex; align-items: center; gap: 5px; }
+.tbar { height: 5px; width: 60px; background: #e9eef8; border-radius: 3px; overflow: hidden; flex-shrink: 0; }
+.tbar-f { height: 100%; border-radius: 3px; }
+.tbar-g { background: #4ade80; } .tbar-y { background: #fbbf24; } .tbar-r { background: #ef4444; } .tbar-n { background: #94a3b8; }
+.status-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.s-g { background: #4ade80; } .s-y { background: #fbbf24; } .s-r { background: #ef4444; } .s-n { background: #94a3b8; }
+.td-sem { font-size: 9.5px; color: var(--soft); }
+.td-sem strong { color: var(--mid); font-weight: 700; }
+
+/* ─── META SEMESTRAL CHIP on cards ─── */
+.meta-sem-chip {
+  display: inline-flex; align-items: center; gap: 3px;
+  font-size: 8.5px; font-weight: 600; color: var(--soft);
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 4px; padding: 1px 5px; margin-left: 4px;
+  white-space: nowrap;
+}
+.meta-sem-chip::before { content: '⟶'; font-size: 8px; }
+
+.meta-jul-line {
+  font-size:9px; font-weight:600; color:var(--mid);
+  margin-top:3px; display:flex; align-items:center; gap:3px;
+}
+.meta-jul-line::before {
+  content:'Meta Alvo:';
+  font-size:8.5px; font-weight:700;
+  color:var(--azul); opacity:0.75;
+  background:var(--bg); border:1px solid var(--border);
+  border-radius:3px; padding:0 4px; line-height:1.6;
+}
+
+/* ═══════════════════════════════
+   RESPONSIVO — MOBILE (iPhone)
+═══════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* HEADER */
+  .header { padding: 12px 16px; flex-wrap: wrap; gap: 10px; }
+  .header::before, .header::after { display: none; }
+  .h-logo { padding-right: 16px; margin-right: 16px; }
+  .h-logo-name { font-size: 16px; }
+  .h-title h1 { font-size: 12px; }
+  .h-title p  { font-size: 9px; }
+  .h-legend   { display: none; }
+
+  /* JORNADA */
+  .journey { flex-wrap: wrap; gap: 8px; padding: 8px 16px; }
+  .j-label { font-size: 8px; }
+  .j-track { width: 100%; }
+  .j-arrow { padding: 0 4px; font-size: 11px; }
+  .j-name  { font-size: 9px; }
+  .j-sub   { font-size: 7px; }
+  .j-pilares { display: none; }
+
+  /* VIEW TABS */
+  .view-tabs-bar { padding: 0 16px; }
+  .vtab { padding: 9px 14px; font-size: 10px; }
+
+  /* MAIN */
+  .main { padding: 10px 12px 20px; }
+
+  /* HERO ROW — stack vertically */
+  .hero-row {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto !important;
+  }
+  .nsm-hero { grid-row: auto !important; }
+  .hero-right { width: 100%; }
+  .counters-col {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 6px;
+  }
+  .nsm-num { font-size: 42px; }
+
+  /* FAT HERO */
+  .fat-hero { padding: 14px; }
+  .fat-title { font-size: 12px; }
+  .fat-m-val { font-size: 22px !important; }
+  #fat-months { grid-template-columns: repeat(2,1fr) !important; }
+
+  /* MONTH GRID inside fat card */
+  [style*="grid-template-columns:1fr 1fr 1fr"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* DIAGNÓSTICO */
+  .diag { grid-template-columns: 1fr !important; }
+
+  /* ÁREA SECTIONS */
+  .area-section-body.cols-4,
+  .area-section-body.cols-3,
+  .area-section-body[style*="grid-template-columns:1fr 1fr 1fr 1fr 1fr"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .area-section-header { font-size: 9.5px; padding: 7px 12px; }
+  .area-section-header .ah-sub { display: none; }
+
+  /* BOTTOM ROW */
+  .bottom-row { grid-template-columns: 1fr !important; }
+
+  /* TABLE VIEW */
+  .tv-toolbar { flex-direction: column; align-items: flex-start; }
+  .area-filter { gap: 4px; }
+  .af-btn { font-size: 9.5px; padding: 3px 10px; }
+
+  /* SECTION LABELS */
+  .sec { font-size: 8px; }
+
+  /* CARD */
+  .acard { min-width: 0; }
+  .ac-name { font-size: 9px; }
+  .on { font-size: 9.5px; }
+  .ov { font-size: 12px; }
+
+}
+
+@media (max-width: 400px) {
+  .area-section-body.cols-4,
+  .area-section-body.cols-3 {
+    grid-template-columns: 1fr !important;
+  }
+  .counters-col {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .h-logo-name { font-size: 14px; }
+  .nsm-num { font-size: 36px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="h-logo">
+    <div class="h-logo-name">Oficina<br>Brasil</div>
+    <div class="h-logo-tag">Fortalecer o mecânico para mover o Brasil.</div>
+  </div>
+  <div class="h-title">
+    <h1>OKRs 1S26 — Painel Executivo de Liderança</h1>
+    <p>Sheet: Consolidado &nbsp;·&nbsp; Resultados até Abril / 2026 &nbsp;·&nbsp; Reunião de Liderança &nbsp;·&nbsp; Uso interno</p>
+  </div>
+  <div class="h-legend">
+    <div class="legend-row">
+      <div class="li"><div class="dot dg"></div> No caminho</div>
+      <div class="li"><div class="dot dy"></div> Em risco</div>
+      <div class="li"><div class="dot dr"></div> Plano de ação</div>
+      <div class="li"><div class="dot dn"></div> Sem dado</div>
+    </div>
+  </div>
+</div>
+
+<!-- JORNADA STRIP -->
+<div class="journey">
+  <div class="j-label">Jornada<br>estratégica</div>
+  <div class="j-track">
+    <div class="j-step">
+      <div class="j-circle">1</div>
+      <div class="j-text"><span class="j-sub">Em andamento</span><span class="j-name">Saturar Mídia</span></div>
+    </div>
+    <div class="j-arrow">→</div>
+    <div class="j-step active">
+      <div class="j-circle">2</div>
+      <div class="j-text"><span class="j-sub">Foco atual ▶</span><span class="j-name">Digitalizar Oferta</span></div>
+    </div>
+    <div class="j-arrow">→</div>
+    <div class="j-step">
+      <div class="j-circle">3</div>
+      <div class="j-text"><span class="j-sub">Horizonte 2027+</span><span class="j-name">Permear Receita</span></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- VIEW TABS -->
+<div class="view-tabs-bar">
+  <div class="vtab vactive" onclick="setView('painel')">📊 Painel Visual</div>
+  <div class="vtab" onclick="setView('tabela')">📋 Tabela Detalhada</div>
+</div>
+
+</div>
+
+<!-- MAIN -->
+<div id="painel-view">
+<div class="main">
+
+  <!-- HERO ROW -->
+  <div class="hero-row">
+
+    <!-- NSM HERO -->
+    <div class="nsm-hero">
+      <div class="nsm-top">
+        <div class="nsm-star">★</div>
+        <div>
+          <div class="nsm-lbl">North Star Metric</div>
+          <div class="nsm-sublbl">Reparadores Ativos Identificados</div>
+        </div>
+      </div>
+      <div class="nsm-num" id="nsm-num">11.908<sup>abr</sup></div>
+      <div class="nsm-meta">Meta mensal <strong>12.000</strong> &nbsp;·&nbsp; Baseline <strong>4.900</strong></div>
+      <div class="nsm-track-lbl"><span>0</span><span id="nsm-pct">99,2% da meta</span><span>12k</span></div>
+      <div class="nsm-track"><div class="nsm-fill" id="nsm-fill" style="width:99.2%"></div></div>
+      <div class="nsm-pills" id="nsm-pills">
+        <span class="npill bad">Jan 10,8%</span>
+        <span class="npill bad">Fev 28,5%</span>
+        <span class="npill ok">Mar 99,6%</span>
+        <span class="npill ok" id="nsm-active-pill">● Abr 99,2%</span>
+      </div>
+    </div>
+
+    <!-- DIREITA: RECEITA + CONTADORES -->
+    <div class="hero-right">
+    <div class="fat-hero">
+      <div class="fat-lbl">Corp OKR 1 · Volume de Vendas · Todas as áreas</div>
+      <div class="fat-title">Alcançar volume de vendas no semestre</div>
+      <div class="fat-sub">Meta semestral R$25MM &nbsp;·&nbsp; Baseline R$20MM</div>
+      <!-- 3 métricas principais -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px">
+        <div class="fat-m">
+          <div class="fat-m-lbl">Realizado acum.</div>
+          <div class="fat-m-val ok" id="fat-real">R$17,6MM</div>
+          <div class="fat-m-sub">de R$25MM meta</div>
+        </div>
+        <div class="fat-m">
+          <div class="fat-m-lbl">Acumulado vs. meta acum. abr</div>
+          <div class="fat-m-val ok" id="fat-pct">105,7%</div>
+          <div class="fat-m-sub" id="fat-pct-sub">meta acum. abr: R$16,7MM ✓</div>
+        </div>
+        <div class="fat-m">
+          <div class="fat-m-lbl">vs. meta semestral</div>
+          <div class="fat-m-val warn" id="fat-sem-pct">70,5%</div>
+          <div class="fat-m-sub">R$25MM · jul/26</div>
+        </div>
+      </div>
+      <!-- barras -->
+      <div class="pr">
+        <span class="pl">Acum. vs meta abr</span>
+        <div class="pt"><div class="pf" id="fat-bar1" style="width:100%"></div></div>
+        <span class="pp" id="fat-bar1-val" style="color:var(--g)">106%</span>
+      </div>
+      <div class="pr">
+        <span class="pl">vs. meta jul</span>
+        <div class="pt"><div class="pf pf-y" id="fat-bar2" style="width:70.5%"></div></div>
+        <span class="pp c-y" id="fat-bar2-val">70,5%</span>
+      </div>
+      <!-- evolução mensal -->
+      <div style="margin-top:10px">
+        <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--soft);margin-bottom:6px">Evolução mensal</div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px" id="fat-months">
+          <div style="background:var(--bg);border-radius:6px;padding:7px 8px;text-align:center">
+            <div style="font-size:9px;color:var(--soft);font-weight:600">Janeiro</div>
+            <div style="font-weight:800;font-size:13px;color:var(--y)">93%</div>
+            <div style="font-size:9px;color:var(--soft)">R$6,3MM</div>
+          </div>
+          <div style="background:var(--bg);border-radius:6px;padding:7px 8px;text-align:center">
+            <div style="font-size:9px;color:var(--soft);font-weight:600">Fevereiro</div>
+            <div style="font-weight:800;font-size:13px;color:var(--r)">83%</div>
+            <div style="font-size:9px;color:var(--soft)">R$8,1MM</div>
+          </div>
+          <div style="background:var(--bg);border-radius:6px;padding:7px 8px;text-align:center">
+            <div style="font-size:9px;color:var(--soft);font-weight:600">Março</div>
+            <div style="font-weight:800;font-size:13px;color:var(--g)">118%</div>
+            <div style="font-size:9px;color:var(--soft)">R$16,8MM</div>
+          </div>
+          <div style="background:var(--azul);border-radius:6px;padding:7px 8px;text-align:center;border:2px solid rgba(144,242,82,0.3)">
+            <div style="font-size:9px;color:rgba(255,255,255,0.6);font-weight:600">Abril</div>
+            <div style="font-weight:800;font-size:13px;color:var(--verde)">106%</div>
+            <div style="font-size:9px;color:rgba(255,255,255,0.5)">R$17,6MM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div><!-- /hero-right -->
+
+    <!-- CONTADORES COLUNA -->
+    <div class="counters-col">
+      <div class="ct ct-t"><div class="ct-n2">43</div><div class="ct-lbl">OKRs mapeados</div></div>
+      <div class="ct ct-g"><div class="ct-n2">20</div><div class="ct-lbl">✓ No caminho</div></div>
+      <div class="ct ct-y"><div class="ct-n2">7</div><div class="ct-lbl">⚠ Em risco</div></div>
+      <div class="ct ct-r"><div class="ct-n2">8</div><div class="ct-lbl">✗ Plano de ação</div></div>
+      <div class="ct ct-n"><div class="ct-n2">8</div><div class="ct-lbl">~ Sem dado / TBD</div></div>
+    </div><!-- /counters-col -->
+
+  </div><!-- /hero-row -->
+
+  <!-- ═══ ÁREA: PLATAFORMA DE DADOS ═══ -->
+  <div class="sec">Plataforma de Dados & Produto Digital</div>
+  <div class="area-section">
+    <div class="area-section-header">
+      <span class="ah-icon">🗄</span> Squad Dados &nbsp;·&nbsp; Tech Indústria &nbsp;·&nbsp; Tech Novos Negócios &nbsp;·&nbsp; Reparadores
+      <span class="ah-sub">4 áreas · Habilitadores do Degrau 2</span>
+    </div>
+    <div class="area-section-body cols-4">
+
+      <!-- DADOS -->
+      <div class="acard">
+        <div class="ac-head"><span class="ac-name">Squad Dados</span><span style="flex:1"></span><span class="badge bg2">✓ Acima</span></div>
+        <div class="or">
+          <div class="ot"><span class="on">CNPJs/CPFs atualizados (meta abr: 7.344)</span><span class="ov c-g" id="dados-cad">15.164</span></div>
+          <div class="meta-jul-line"> 12.000</div>
+          <div class="pr"><div class="pt"><div class="pf pf-g" id="dados-cad-bar" style="width:100%"></div></div><span class="pp c-g" id="dados-cad-pct">206%</span></div>
+          <div class="pills" id="dados-cad-pills"><span class="p pg">Fev 164%</span><span class="p pg">Mar 224%</span><span class="p pg">Abr 206%</span></div>
+        </div>
+        <div class="or">
+          <div class="ot"><span class="on">Health Score base ativa (meta abr: 40,2)</span><span class="ov c-g" id="dados-hs">73,8</span></div>
+          <div class="meta-jul-line"> 60</div>
+          <div class="pr"><div class="pt"><div class="pf pf-g" id="dados-hs-bar" style="width:100%"></div></div><span class="pp c-g" id="dados-hs-pct">184%</span></div>
+          <div class="pills" id="dados-hs-pills"><span class="p pg">Meta 40,2</span><span class="p pg">Real 73,8</span></div>
+        </div>
+        <div class="or">
+          <div class="ot"><span class="on">Health Score base total</span><span class="ov c-g" id="dados-hst">68,0</span></div>
+          <div class="pills"><span class="p pg">Mar 67,9</span><span class="p pg">Abr 68,0</span></div>
+        </div>
+      </div>
+
+      <!-- TECH INDUSTRIA -->
+      <div class="acard">
+        <div class="ac-head"><span class="ac-name">Tech Indústria</span><span style="flex:1"></span><span class="badge by2">⚠ Misto</span></div>
+        <div class="or">
+          <div class="ot"><span class="on">WAU elegíveis OBAds (meta 20% abr)</span><span class="ov c-g" id="ti-wau">25%</span></div>
+          <div class="pr"><div class="pt"><div class="pf pf-g" id="ti-wau-bar" style="width:100%"></div></div><span class="pp c-g" id="ti-wau-pct">125%</span></div>
+          <div class="pills" id="ti-wau-pills"><span class="p pg">Fev 111%</span><span class="p pg">Mar 153%</span><span class="p pg">Abr 125%</span></div>
+        </div>
+        <div class="or">
+          <div class="ot"><span class="on">Indústrias usando IA (meta 3 abr)</span><span class="ov c-r" id="ti-ia">0</span></div>
+          <div class="meta-jul-line"> 5 indústrias</div>
+          <div class="pr"><div class="pt"><div class="pf pf-r" id="ti-ia-bar" style="width:0%"></div></div><span class="pp c-r" id="ti-ia-pct">0%</span></div>
+          <div class="pills"><span class="p pr2">Mar 0%</span><span class="p pr2">Abr 0%</span></div>
+        </div>
+        <div class="or">
+          <div class="ot"><span class="on">Ultracar clientes pagantes</span><span class="ov c-s">TBD</span>
+          <div class="meta-jul-line"> 2 clientes</div></div>
+          
+        </div>
+      </div>
+
+      <!-- TECH NOVOS NEG -->
+      <div class="acard">
+        <div class="ac-head"><span class="ac-name">Tech Novos Negócios</span><span style="flex:1"></span><span class="badge by2">⚠ Parcial</span></div>
+        <div class="or">
+          <div class="ot"><span class="on">Retenção D7 (meta 16% abr)</span><span class="ov c-y" id="tnn-d7">10%</span></div>
+          <div class="meta-jul-line"> 20%</div>
+          <div class="pr"><div class="pt"><div class="pf pf-y" id="tnn-d7-bar" style="width:62.5%"></div></div><span class="pp c-y" id="tnn-d7-pct">62,5%</span></div>
+          <div class="pills" id="tnn-d7-pills"><span class="p pg">Jan 100%</span><span class="p pg">Fev 162%</span><span class="p pg">Mar 103%</span><span class="p pr2">Abr 63%</span></div>
+        </div>
+        <div class="or">
+          <div class="ot"><span class="on">Manuais plano pago (meta acum 30 abr)</span><span class="ov c-r" id="tnn-man">0</span></div>
+          <div class="meta-jul-line"> 100 reparadores</div>
+          <div class="pr"><div class="pt"><div class="pf pf-r" id="tnn-man-bar" style="width:0%"></div></div><span class="pp c-r" id="tnn-man-pct">0%</span></div>
+          <div class="pills"><span class="p pr2">Fev 0</span><span class="p pr2">Mar 0</span><span class="p pr2">Abr 0</span></div>
+        </div>
+        <div class="or">
+          <div class="on" style="margin-bottom:5px;">Visitantes/dia Conecta <span style="font-size:9px;color:var(--soft)">(meta: 2.250/dia · abr)</span></div>
+          <div class="conecta-dias">
+            <div class="cd-row"><span class="cd-day">Sex</span><div class="cd-track"><div class="cd-fill" style="width:43.2%"></div></div><span class="cd-val c-y">971</span><span class="cd-pct">43%</span></div>
+            <div class="cd-row"><span class="cd-day">Sáb</span><div class="cd-track"><div class="cd-fill cd-fill-ok" style="width:75.6%"></div></div><span class="cd-val" style="color:#16a34a">1.700</span><span class="cd-pct">76%</span></div>
+            <div class="cd-row"><span class="cd-day">Dom</span><div class="cd-track"><div class="cd-fill" style="width:57.8%"></div></div><span class="cd-val c-y">1.300</span><span class="cd-pct">58%</span></div>
+          </div>
+          <div class="pills" style="margin-top:4px;"></div>
+        </div>
+      </div>
+
+      <!-- REPARADORES -->
+      <div class="acard">
+        <div class="ac-head"><span class="ac-name">Reparadores (Tech)</span><span style="flex:1"></span><span class="badge bg2">✓ Parcial</span></div>
+        <div class="or">
+          <div class="ot"><span class="on">MAU logados (meta 45,9% abr)</span><span class="ov c-g" id="rep-mau">47,5%</span></div>
+          <div class="meta-jul-line"> 50%</div>
+          <div class="pr"><div class="pt"><div class="pf pf-g" id="rep-mau-bar" style="width:100%"></div></div><span class="pp c-g" id="rep-mau-pct">104%</span></div>
+          <div class="pills" id="rep-mau-pills"><span class="p pg">Mar 132%</span><span class="p pg">Abr 104%</span></div>
+        </div>
+        <div class="or">
+          <div class="ot"><span class="on">Comunidades 2 ações (meta 6 abr)</span><span class="ov c-y" id="rep-com">4/6</span></div>
+          <div class="meta-jul-line"> 80% comunidades</div>
+          <div class="pr"><div class="pt"><div class="pf pf-y" id="rep-com-bar" style="width:66.7%"></div></div><span class="pp c-y" id="rep-com-pct">67%</span></div>
+          <div class="pills" id="rep-com-pills"><span class="p pr2">Mar 40%</span><span class="p py">Abr 67%</span></div>
+        </div>
+        <div class="or">
+          <div class="ot"><span class="on">Health Score completo</span><span class="ov c-s">N/A</span></div>
+          <div class="meta-jul-line"> 60%</div>
+          <div class="pills"><span class="p pn">Não apurado</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ ÁREA: COMERCIAL & RELACIONAMENTO ═══ -->
+  <div class="sec">Comercial, CRM & Customer Success</div>
+  <div class="area-section">
+    <div class="area-section-header">
+      <span class="ah-icon">🤝</span> Comercial &nbsp;·&nbsp; CRM & Performance &nbsp;·&nbsp; CS + Comercial &nbsp;·&nbsp; Inteligência de Mercado
+      <span class="ah-sub">4 áreas · Geração e retenção de receita</span>
+    </div>
+    <div class="area-section-body cols-4">
+
+      <!-- COMERCIAL -->
+      <div class="acard">
+        <div class="ac-head"><span class="ac-name">Comercial</span><span style="flex:1"></span><span class="badge br2">✗ Atenção</span></div>
+        <div class="or" data-metric="comercial-renov">
+          <div class="ot"><span class="on">Renovação contratos (meta semestral 40)</span><span class="ov c-y">31</span></div>
+          <div class="meta-jul-line"> 40 clientes (80% de 50)</div>
+          <div class="pr"><div class="pt"><div class="pf pf-y" style="width:77.5%"></div></div><span class="pp c-y">77,5%</span></div>
+          <div class="pills"><span class="p pg">Mar 153%</span><span class="p py">Abr 57%</span></div>
+        </div>
+        <div class="or" data-metric="comercial-com">
+          <div class="ot"><span class="on">Comunidades vendidas (meta sem. 10)</span><span class="ov c-r">5</span></div>
+          <div class="pr"><div class="pt"><div class="pf pf-r" style="width:50%"></div></div><span class="pp c-r">50%</span></div>
+          <div class="pills"><span class="p pg">Jan+Fev 3</span><span class="p py">Mar 67%</span><span class="p pr2">Abr 0%</span></div>
+        </div>
+      </div>
+
+      <!-- CRM -->
+      <div class="acard">
+        <div class="ac-head"><span class="ac-name">CRM & Performance</span><span style="flex:1"></span><span class="badge by2">⚠ Parcial</span></div>
+        <div class="or" data-metric="crm-com">
+          <div class="ot"><span class="on">Comunidades c/ 2 ações/user (meta 5)</span><span class="ov c-y">3/5</span></div>
+          <div class="meta-jul-line"> 80% comunidades</div>
+          <div class="pr"><div class="pt"><div class="pf pf-y" style="width:60%"></div></div><span class="pp c-y">60%</span></div>
+          <div class="pills"><span class="p pr2">Mar 40%</span><span class="p py">Abr 60%</span></div>
+        </div>
+        <div class="or" data-metric="crm-train">
+          <div class="ot"><span class="on">Treinamentos com sucesso (meta 6 abr)</span><span class="ov c-y">4/6</span></div>
+          <div class="pr"><div class="pt"><div class="pf pf-y" style="width:66.7%"></div></div><span class="pp c-y">67%</span></div>
+          <div class="pills"><span class="p pg">Mar 100%</span><span class="p py">Abr 67%</span></div>
+        </div>
+        <div class="or">
+          <div class="on" style="margin-bottom:5px;">Visitantes/dia Conecta <span style="font-size:9px;color:var(--soft)">(meta: 2.250/dia · abr)</span></div>
+          <div class="conecta-dias">
+            <div class="cd-row"><span class="cd-day">Sex</span><div class="cd-track"><div class="cd-fill" style="width:43.2%"></div></div><span class="cd-val c-y">971</span><span class="cd-pct">43%</span></div>
+            <div class="cd-row"><span class="cd-day">Sáb</span><div class="cd-track"><div class="cd-fill cd-fill-ok" style="width:75.6%"></div></div><span class="cd-val" style="color:#16a34a">1.700</span><span class="cd-pct">76%</span></div>
+            <div class="cd-row"><span class="cd-day">Dom</span><div class="cd-track"><div class="cd-fill" style="width:57.8%"></div></div><span class="cd-val c-y">1.300</span><span class="cd-pct">58%</span></div>
+          </div>
+          <div class="pills" style="margin-top:4px;"></div>
+        </div>
+      </div>
+
+      <!-- CSM -->
+      <div class="acard">
+        <div class="ac-head"><span class="ac-name">CS + Comercial</span><span style="flex:1"></span><span class="badge bg2">✓ Sólido</span></div>
+        <div class="or" data-metric="csm-ipee">
+          <div class="ot"><span class="on">IPEE expansão (meta 3/mês)</span><span class="ov c-g">3</span></div>
+          <div class="meta-jul-line"> 20 acumulado</div>
+          <div class="pr"><div class="pt"><div class="pf pf-g" style="width:100%"></div></div><span class="pp c-g">100%</span></div>
+          <div class="pills"><span class="p pg">Fev 100%</span><span class="p py">Mar 67%</span><span class="p pg">Abr 100%</span></div>
+        </div>
+        <div class="or" data-metric="csm-nrr">
+          <div class="ot"><span class="on">NRR Retenção antecipada (meta 40%)</span><span class="ov c-g">45%</span></div>
+          <div class="meta-jul-line"> 55%</div>
+          <div class="pr"><div class="pt"><div class="pf pf-g" style="width:100%"></div></div><span class="pp c-g">113%</span></div>
+          <div class="pills"><span class="p pg">Fev 107%</span><span class="p pg">Mar 106%</span><span class="p pg">Abr 113%</span></div>
+        </div>
+        <div class="or" data-metric="csm-adoc">
+          <div class="ot"><span class="on">Taxa adoção jornada OFBR (meta 17%)</span><span class="ov c-r">10%</span></div>
+          <div class="meta-jul-line"> 30%</div>
+          <div class="pr"><div class="pt"><div class="pf pf-r" style="width:58.8%"></div></div><span class="pp c-r">59%</span></div>
+          <div class="pills"><span class="p pg">Fev 113%</span><span class="p pg">Mar 153%</span><span class="p pr2">Abr 59%</span></div>
+        </div>
+      </div>
+
+      <!-- IM -->
+      <div class="acard">
+        <div class="ac-head"><span class="ac-name">Inteligência de Mercado</span><span style="flex:1"></span><span class="badge by2">⚠ Parcial</span></div>
+        <div class="or" data-metric="im-oport">
+          <div class="ot"><span class="on">Oportunidades comerciais IM (meta 3 abr)</span><span class="ov c-g">4</span></div>
+          <div class="meta-jul-line"> 15 oportunidades</div>
+          <div class="pr"><div class="pt"><div class="pf pf-g" style="width:100%"></div></div><span class="pp c-g">133%</span></div>
+          <div class="pills"><span class="p pn">Mar 0</span><span class="p pg">Abr 4</span><span class="p pn" style="font-size:8px">COFAP KYB Valeo NGK</span></div>
+        </div>
+        <div class="or">
+          <div class="ot"><span class="on">WAU projetos pesados</span><span class="ov c-s">TBD</span></div>
+          
+        </div>
+        <div class="or">
+          <div class="ot"><span class="on">Ultracar clientes pagantes</span><span class="ov c-s">TBD</span></div>
+          
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ ÁREA: EVENTOS & CONTENT ═══ -->
+  <div class="sec">Eventos, Content, Pós-Venda, Financeiro & RH</div>
+  <div class="area-section">
+    <div class="area-section-header">
+      <span class="ah-icon">📣</span> Eventos — Conecta + Educa &nbsp;·&nbsp; Content &nbsp;·&nbsp; Pós-Venda &nbsp;·&nbsp; Financeiro &nbsp;·&nbsp; RH & Cultura
+      <span class="ah-sub">5 áreas · Sustentação e crescimento</span>
+    </div>
+    <div class="area-section-body cols-3" style="grid-template-columns:1fr 1fr 1fr 1fr 1fr;">
+
+      <!-- EVENTOS -->
+      <div class="acard">
+        <div class="ac-head"><span class="ac-name">Eventos</span><span style="flex:1"></span><span class="badge bg2">✓ Misto</span></div>
+        <div class="or" data-metric="ev-custo">
+          <div class="ot"><span class="on">Custo Conecta (meta ≤ R$7,8M abr)</span><span class="ov c-g">R$7,82M</span></div>
+          <div class="pr"><div class="pt"><div class="pf pf-g" style="width:100%"></div></div><span class="pp c-g">100%</span></div>
+          <div class="pills"><span class="p pg">Fev 102%</span><span class="p pg">Mar 101%</span><span class="p pg">Abr 100%</span></div>
+        </div>
+        <div class="or" data-metric="ev-renov-con">
+          <div class="ot"><span class="on">Renovação patrocin. Conecta (meta 70%)</span><span class="ov c-g">63%</span></div>
+          <div class="pr"><div class="pt"><div class="pf pf-g" style="width:90%"></div></div><span class="pp c-g">90%</span></div>
+          <div class="pills"><span class="p py">Mar 86%</span><span class="p pg">Abr 90%</span></div>
+        </div>
+        <div class="or" data-metric="ev-retorno">
+          <div class="ot"><span class="on">Retorno 2x Educa (meta 15% abr)</span><span class="ov c-g">23%</span></div>
+          <div class="meta-jul-line"> 27%</div>
+          <div class="pr"><div class="pt"><div class="pf pf-g" style="width:100%"></div></div><span class="pp c-g">153%</span></div>
+          <div class="pills"><span class="p pg">Mar 140%</span><span class="p pg">Abr 153%</span></div>
+        </div>
+        <div class="or" data-metric="ev-distrib">
+          <div class="ot"><span class="on">Distribuidores c/ crescimento pós-Educa (meta 10% abr)</span><span class="ov c-r">0%</span></div>
+          <div class="pr"><div class="pt"><div class="pf pf-r" style="width:0%"></div></div><span class="pp c-r">0%</span></div>
+          <div class="pills"><span class="p pr2">Abr 0%</span></div>
+        </div>
+        <div class="or" data-metric="ev-renov-edu">
+          <div class="ot"><span class="on">Renovação patrocin. Educa (meta 60% abr)</span><span class="ov c-g">67%</span></div>
+          <div class="pr"><div class="pt"><div class="pf pf-g" style="width:100%"></div></div><span class="pp c-g">112%</span></div>
+          <div class="pills"><span class="p pg">Fev 120%</span><span class="p pg">Mar 134%</span><span class="p pg">Abr 112%</span></div>
+        </div>
+        <div class="or">
+          <div class="on" style="margin-bottom:5px;">Visitas únicas/dia Conecta <span style="font-size:9px;color:var(--soft)">(meta: 2.250/dia · abr)</span></div>
+          <div class="conecta-dias">
+            <div class="cd-row"><span class="cd-day">Sex</span><div class="cd-track"><div class="cd-fill" style="width:43.2%"></div></div><span class="cd-val c-y">971</span><span class="cd-pct">43%</span></div>
+            <div class="cd-row"><span class="cd-day">Sáb</span><div class="cd-track"><div class="cd-fill cd-fill-ok" style="width:75.6%"></div></div><span class="cd-val" style="color:#16a34a">1.700</span><span class="cd-pct">76%</span></div>
+            <div class="cd-row"><span class="cd-day">Dom</span><div class="cd-track"><div class="cd-fill" style="width:57.8%"></div></div><span class="cd-val c-y">1.300</span><span class="cd-pct">58%</span></div>
+          </div>
+          <div class="pills" style="margin-top:4px;"></div>
+        </div>
+      </div>
+
+      <!-- CONTENT -->
+      <div class="acard">
+        <div class="ac-head"><span class="ac-name">Content</span><span style="flex:1"></span><span class="badge by2">⚠ Abaixo</span></div>
+        <div class="or" data-metric="ct-views">
+          <div class="ot"><span class="on">Visualizações acum. (meta abr: 1,05M)</span><span class="ov c-y">581k</span></div>
+          <div class="pr"><div class="pt"><div class="pf pf-y" style="width:55.4%"></div></div><span class="pp c-y">55%</span></div>
+          <div class="pills"><span class="p pr2">Fev 56%</span><span class="p py">Mar 64%</span><span class="p py">Abr 55%</span></div>
+        </div>
+        <div class="or" data-metric="ct-seg">
+          <div class="ot"><span class="on">Seguidores (meta abr: 160.971)</span><span class="ov c-r">141.336</span></div>
+          <div class="meta-jul-line"> +30% (178.039)</div>
+          <div class="pr"><div class="pt"><div class="pf pf-r" style="width:87.8%"></div></div><span class="pp c-r">87,8%</span></div>
+          <div class="pills"><span class="p py">Fev 96,8%</span><span class="p py">Mar 95,1%</span><span class="p pr2">Abr 87,8%</span></div>
+        </div>
+        <div class="or">
+          <div class="on" style="margin-bottom:5px;">Visitantes/dia Conecta — compartilhada <span style="font-size:9px;color:var(--soft)">(meta: 2.250/dia · abr)</span></div>
+          <div class="conecta-dias">
+            <div class="cd-row"><span class="cd-day">Sex</span><div class="cd-track"><div class="cd-fill" style="width:43.2%"></div></div><span class="cd-val c-y">971</span><span class="cd-pct">43%</span></div>
+            <div class="cd-row"><span class="cd-day">Sáb</span><div class="cd-track"><div class="cd-fill cd-fill-ok" style="width:75.6%"></div></div><span class="cd-val" style="color:#16a34a">1.700</span><span class="cd-pct">76%</span></div>
+            <div class="cd-row"><span class="cd-day">Dom</span><div class="cd-track"><div class="cd-fill" style="width:57.8%"></div></div><span class="cd-val c-y">1.300</span><span class="cd-pct">58%</span></div>
+          </div>
+          <div class="pills" style="margin-top:4px;"></div>
+        </div>
+      </div>
+
+      <!-- POS-VENDA -->
+      <div class="acard">
+        <div class="ac-head"><span class="ac-name">Pós-Venda</span><span style="flex:1"></span><span class="badge bg2">✓ SLA sólido</span></div>
+        <div class="or" data-metric="pv-sla">
+          <div class="ot"><span class="on">Nível de serviço 30s (meta 70%)</span><span class="ov c-g">80%</span></div>
+          <div class="pr"><div class="pt"><div class="pf pf-g" style="width:100%"></div></div><span class="pp c-g">107–127%</span></div>
+          <div class="pills"><span class="p pg">Jan 107%</span><span class="p pg">Fev 127%</span><span class="p pg">Mar 114%</span><span class="p pg">Abr 107%</span></div>
+        </div>
+        <div class="or" data-metric="pv-aband">
+          <div class="ot"><span class="on">Taxa abandono (meta 12% abr)</span><span class="ov c-g">9%</span></div>
+          <div class="meta-jul-line"> ≤ 10%</div>
+          <div class="pr"><div class="pt"><div class="pf pf-g" style="width:100%"></div></div><span class="pp c-g">133%</span></div>
+          <div class="pills"><span class="p pg">Mar 286%</span><span class="p pg">Abr 133%</span></div>
+        </div>
+        <div class="or" data-metric="pv-manual">
+          <div class="ot"><span class="on">SLA produção manual (meta 75%)</span><span class="ov c-y">58%</span></div>
+          <div class="meta-jul-line"> 90% em 4 horas</div>
+          <div class="pr"><div class="pt"><div class="pf pf-y" style="width:77.3%"></div></div><span class="pp c-y">77%</span></div>
+          <div class="pills"><span class="p py">Mar 77%</span><span class="p py">Abr 72%</span></div>
+        </div>
+      </div>
+
+      <!-- FINANCEIRO -->
+      <div class="acard">
+        <div class="ac-head"><span class="ac-name">Financeiro</span><span style="flex:1"></span><span class="badge bn2">~ Parcial</span></div>
+        <div class="or" data-metric="fin-fat">
+          <div class="ot"><span class="on">Faturado / Faturável abr (meta 98%)</span><span class="ov c-y">51,2%</span></div>
+          <div class="meta-jul-line"> 98%</div>
+          <div class="pr"><div class="pt"><div class="pf pf-y" style="width:52.3%"></div></div><span class="pp c-y">52%</span></div>
+          <div class="pills"><span class="p pr2">Jan 16%</span><span class="p py">Fev 41%</span><span class="p pr2">Mar 35%</span><span class="p py">Abr 51%</span></div>
+        </div>
+        <div class="or">
+          <div class="ot"><span class="on">Entrada de caixa (meta 96%)</span><span class="ov c-s">N/A</span></div>
+          <div class="meta-jul-line"> 96%</div>
+          <div class="pills"><span class="p pn">Não apurado</span></div>
+        </div>
+        <div class="or">
+          <div class="ot"><span class="on">Gastos / Faturado</span><span class="ov c-s">TBD</span></div>
+          <div class="pills"><span class="p pn">Meta a definir</span></div>
+        </div>
+      </div>
+
+      <!-- RH -->
+      <div class="acard">
+        <div class="ac-head"><span class="ac-name">RH & Cultura</span><span style="flex:1"></span><span class="badge by2">⚠ Gap NPS</span></div>
+        <div class="or" data-metric="rh-gap">
+          <div class="ot"><span class="on">GAP e-NPS vs L-NPS (meta 33 abr)</span><span class="ov c-r">41</span></div>
+          <div class="meta-jul-line"> 15 (gap)</div>
+          <div class="pr"><div class="pt"><div class="pf pf-r" style="width:80.5%"></div></div><span class="pp c-r">80%</span></div>
+          <div class="pills"><span class="p py">Fev 80%</span><span class="p pg">Mar 103%</span><span class="p pr2">Abr 80%</span></div>
+        </div>
+        <div class="or">
+          <div class="ot"><span class="on">Org Design revisado</span><span class="ov c-y" style="font-size:11px">Escopo</span></div>
+          <div class="meta-jul-line"> Concluído + 100% papéis</div>
+          <div class="pills"><span class="p py">Mar: elaboração</span></div>
+        </div>
+        <div class="or">
+          <div class="ot"><span class="on">Índice bem-estar (meta 6,7)</span><span class="ov c-s">N/A</span></div>
+          <div class="meta-jul-line"> 6,7</div>
+          <div class="pills"><span class="p pn">Não apurado</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DIAGNÓSTICO -->
+  <div class="sec">Diagnóstico por Prioridade — Abril 2026</div>
+  <div class="diag">
+    <div class="dc dr-c">
+      <div class="dtt">🔴 Plano de ação imediato</div>
+      <ul>
+        <li><strong>Comercial renovações:</strong> Abr caiu para 57% — risco de churn nos próximos meses</li>
+        <li><strong>Comunidades CRM:</strong> Meta 5 com 2 ações/user — apenas 3 em abr (60%)</li>
+        <li><strong>Tech IA:</strong> 0 indústrias usando em mar e abr (meta 2 e 3)</li>
+        <li><strong>Manuais pagos:</strong> 0 de 30 acumulados até abr — zero adoção</li>
+        <li><strong>Content views:</strong> 55% do acumulado meta em abr</li>
+      </ul>
+    </div>
+    <div class="dc dy-c">
+      <div class="dtt">🟡 Em risco — monitorar</div>
+      <ul>
+        <li><strong>Vendas semestrais:</strong> 70,5% da meta total de R$25MM</li>
+        <li><strong>Faturado/Faturável:</strong> 51,2% em abr vs meta 98%</li>
+        <li><strong>RH e-NPS gap:</strong> Retrocedeu em abr — voltou para 41 (meta 33)</li>
+        <li><strong>CSM adoção jornada:</strong> 10% em abr vs meta 17%</li>
+        <li><strong>Seguidores content:</strong> 87,8% e tendência de queda</li>
+        <li><strong>Retenção D7:</strong> Caiu para 62,5% em abr</li>
+      </ul>
+    </div>
+    <div class="dc dg-c">
+      <div class="dtt">🟢 No caminho — manter</div>
+      <ul>
+        <li><strong>NSM Reparadores:</strong> 11.908 em abr (99,2% meta)</li>
+        <li><strong>Health Score Dados:</strong> 73,8 em abr vs meta 40,2 (+83%)</li>
+        <li><strong>Pós-venda SLA:</strong> 75% em abr, meta 70% — sólido desde jan</li>
+        <li><strong>CSM NRR Antecipado:</strong> 45% vs meta 40% em abr</li>
+        <li><strong>Educa retorno 2x:</strong> 23% abr vs meta 15%</li>
+        <li><strong>Renovação Educa patrocin.:</strong> 67% vs meta 60% em abr</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- BOTTOM: JORNADA + SÍNTESE -->
+  <div class="bottom-row">
+    <div class="bc">
+      <h4>Onde cada OKR se encaixa na jornada estratégica <span class="bc-tag">REF.</span></h4>
+      <div class="jsteps">
+        <div class="js"><div class="jsl">Degrau 1</div><div class="jst">Saturar Mídia</div><div class="jss">Em andamento</div></div>
+        <div class="js ja"><div class="jsl">Degrau 2 ▶ Foco atual</div><div class="jst">Digitalizar Oferta</div><div class="jss c-a">Aceleração</div></div>
+        <div class="js"><div class="jsl">Degrau 3</div><div class="jst">Permear Receita</div><div class="jss">→ 2027+</div></div>
+      </div>
+      <div class="km"><span class="kms">Saturar</span><span class="kmd">Content (seguidores, views), Conecta (visitantes), Educa (retorno reparadores)</span></div>
+      <div class="km"><span class="kms">Digitalizar</span><span class="kmd">NSM 12k ativos, Comunidades, OBAds WAU, MAU logados, Retenção D7, Health Score</span></div>
+      <div class="km"><span class="kms">Permear</span><span class="kmd">Ultracar recorrente, Tech IA indústria, Dados como ativo, Manuais pagos</span></div>
+      <div class="km"><span class="kms">Habilit.</span><span class="kmd">Finanças (faturado/faturável), RH (org design, cultura), Pós-venda (SLA)</span></div>
+    </div>
+    <div class="bc">
+      <h4>Semáforo Estratégico</h4>
+      <div class="sb sg">
+        <div class="sbt">🟢 Força da plataforma</div>
+        <div class="sbd">Dados e NSM ~99% meta em abr. Vendas acima da meta acumulada de abril. CSM NRR crescendo. Fundação do Degrau 2 habilitada.</div>
+      </div>
+      <div class="sb sy">
+        <div class="sbt">🟡 Gargalo operacional</div>
+        <div class="sbd">Vendas 70,5% da meta semestral. Faturamento com gap. Comunidades e treinamentos abaixo. RH gap voltou em abr.</div>
+      </div>
+      <div class="sb sr">
+        <div class="sbt">🔴 Risco de plataforma</div>
+        <div class="sbd">Comercial desacelerando. Tech IA zero adoção. Manuais pagos 0 de 30 acumulados. Retenção D7 caiu em abr.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div><!-- /painel-view -->
+
+<!-- TABLE VIEW -->
+<div id="tabela-view" class="table-view" style="display:none">
+  <div class="tv-toolbar">
+    <div class="tv-toolbar-label">Filtrar por área:</div>
+    <div class="area-filter">
+      <div class="af-btn af-active" onclick="filterArea('TODAS')">Todas as áreas</div>
+      <div class="af-btn" onclick="filterArea('TODAS/CORPORATIVO')">Corporativo</div>
+      <div class="af-btn" onclick="filterArea('DADOS')">Squad Dados</div>
+      <div class="af-btn" onclick="filterArea('RH')">RH & Cultura</div>
+      <div class="af-btn" onclick="filterArea('FINANCEIRO')">Financeiro</div>
+      <div class="af-btn" onclick="filterArea('IM')">Int. de Mercado</div>
+      <div class="af-btn" onclick="filterArea('CRM')">CRM & Perf.</div>
+      <div class="af-btn" onclick="filterArea('TECH INDÚSTRIA')">Tech Indústria</div>
+      <div class="af-btn" onclick="filterArea('REPARADORES')">Reparadores</div>
+      <div class="af-btn" onclick="filterArea('TECH NOVOS')">Tech Nov. Neg.</div>
+      <div class="af-btn" onclick="filterArea('CONTENT')">Content</div>
+      <div class="af-btn" onclick="filterArea('PÓS-VENDA')">Pós-Venda</div>
+      <div class="af-btn" onclick="filterArea('EVENTOS')">Eventos</div>
+      <div class="af-btn" onclick="filterArea('COMERCIAL')">Comercial</div>
+      <div class="af-btn" onclick="filterArea('CSM')">CSM</div>
+    </div>
+  </div>
+
+  <div class="table-scroll">
+  <table class="okr-table">
+    <thead>
+      <tr>
+        <th style="width:14px"></th>
+        <th>Área</th>
+        <th style="min-width:200px">Métrica / Objetivo</th>
+        <th>Resultado Abr</th>
+        <th>Atingimento</th>
+        <th class="th-meta" style="min-width:130px">⟶ Meta Alvo</th>
+        <th style="min-width:80px">Janeiro</th>
+        <th style="min-width:80px">Fevereiro</th>
+        <th style="min-width:80px">Março</th>
+        <th style="min-width:80px">Abril</th>
+      </tr>
+    </thead>
+    <tbody id="okr-tbody">
+
+      <!-- 1. VENDAS -->
+      <tr data-area="TODAS/CORPORATIVO">
+        <td><div class="status-dot s-g"></div></td>
+        <td><span class="td-area" style="color:var(--azul)">Corporativo</span></td>
+        <td class="td-metrica">Volume de vendas realizadas<br><span style="font-size:9px;color:var(--soft)">Alcançar volume de vendas no semestre</span></td>
+        <td class="td-real c-g">R$17,6MM</td>
+        <td class="td-pct"><div class="tbar-wrap"><div class="tbar"><div class="tbar-f tbar-g" style="width:100%"></div></div><span class="c-g" style="font-size:10px;font-weight:700">106% vs meta abr</span></div></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">R$ 25MM acum.</strong></td>
+        
+        <td class="td-sem">R$6,3MM<br><span>93%</span></td>
+        <td class="td-sem">R$8,1MM<br><span>83%</span></td>
+        <td class="td-sem">R$16,8MM<br><strong>118%</strong></td>
+        <td class="td-sem">R$17,6MM<br><strong>106%</strong></td>
+      </tr>
+
+      <!-- 2. NSM -->
+      <tr data-area="TODAS/CORPORATIVO">
+        <td><div class="status-dot s-g"></div></td>
+        <td><span class="td-area" style="color:var(--azul)">Corporativo</span></td>
+        <td class="td-metrica">NSM — Usuários ativos identificados<br><span style="font-size:9px;color:var(--soft)">Reparadores ativos no ecossistema</span></td>
+        <td class="td-real c-g">11.908</td>
+        <td class="td-pct"><div class="tbar-wrap"><div class="tbar"><div class="tbar-f tbar-g" style="width:99.2%"></div></div><span class="c-g" style="font-size:10px;font-weight:700">99,2%</span></div></td>
+        <td><strong class="td-meta-sem">12.000/mês</strong></td>
+        
+        <td class="td-sem">1.298<br><span style="color:#dc2626">10,8%</span></td>
+        <td class="td-sem">3.425<br><span style="color:#dc2626">28,5%</span></td>
+        <td class="td-sem">11.952<br><strong class="c-g">99,6%</strong></td>
+        <td class="td-sem">11.908<br><strong class="c-g">99,2%</strong></td>
+      </tr>
+
+      <!-- 3. CNPJs -->
+      <tr data-area="DADOS">
+        <td><div class="status-dot s-g"></div></td>
+        <td><span class="td-area" style="color:var(--turq)">Dados</span></td>
+        <td class="td-metrica">CNPJs/CPFs atualizados<br><span style="font-size:9px;color:var(--soft)">Melhorar Health Score — quantidade base ativa</span></td>
+        <td class="td-real c-g">15.164</td>
+        <td class="td-pct"><div class="tbar-wrap"><div class="tbar"><div class="tbar-f tbar-g" style="width:100%"></div></div><span class="c-g" style="font-size:10px;font-weight:700">206%</span></div></td>
+        <td><strong class="td-meta-sem">12.000</strong></td>
+        
+        <td class="td-sem">—</td>
+        <td class="td-sem">6.933<br><strong class="c-g">164%</strong></td>
+        <td class="td-sem">12.997<br><strong class="c-g">224%</strong></td>
+        <td class="td-sem">15.164<br><strong class="c-g">206%</strong></td>
+      </tr>
+
+      <!-- 4. Health Score ativa -->
+      <tr data-area="DADOS">
+        <td><div class="status-dot s-g"></div></td>
+        <td><span class="td-area" style="color:var(--turq)">Dados</span></td>
+        <td class="td-metrica">Health Score — base ativa<br><span style="font-size:9px;color:var(--soft)">Score da base ativa identificada</span></td>
+        <td class="td-real c-g">73,8</td>
+        <td class="td-pct"><div class="tbar-wrap"><div class="tbar"><div class="tbar-f tbar-g" style="width:100%"></div></div><span class="c-g" style="font-size:10px;font-weight:700">184%</span></div></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">Score 60</strong></td>
+        
+        <td class="td-sem">—</td>
+        <td class="td-sem">67,8<br><strong class="c-g">251%</strong></td>
+        <td class="td-sem">67,9<br><strong class="c-g">202%</strong></td>
+        <td class="td-sem">73,8<br><strong class="c-g">184%</strong></td>
+      </tr>
+
+      <!-- 5. Health Score total -->
+      <tr data-area="DADOS">
+        <td><div class="status-dot s-g"></div></td>
+        <td><span class="td-area" style="color:var(--turq)">Dados</span></td>
+        <td class="td-metrica">Health Score — base total<br><span style="font-size:9px;color:var(--soft)">Métrica 2025 base total (referência)</span></td>
+        <td class="td-real c-g">68,0</td>
+        <td class="td-pct"><div class="tbar-wrap"><div class="tbar"><div class="tbar-f tbar-g" style="width:100%"></div></div><span class="c-g" style="font-size:10px;font-weight:700">ref. 60</span></div></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">Referência</strong></td>
+        
+        <td class="td-sem">—</td>
+        <td class="td-sem">67,8</td>
+        <td class="td-sem">67,9</td>
+        <td class="td-sem">68,0</td>
+      </tr>
+
+      <!-- 6. Org Design -->
+      <tr data-area="RH">
+        <td><div class="status-dot s-n"></div></td>
+        <td><span class="td-area" style="color:#7080a8">RH</span></td>
+        <td class="td-metrica">Org Design revisado e comunicado<br><span style="font-size:9px;color:var(--soft)">Eficiência e produtividade via estrutura funcional</span></td>
+        <td class="td-real c-s">Escopo</td>
+        <td class="td-pct"><span style="font-size:9px;color:var(--soft)">Qualitativo</span></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">Concluído</strong></td>
+        
+        <td class="td-sem">—</td><td class="td-sem">—</td><td class="td-sem">Escopo</td><td class="td-sem">—</td>
+      </tr>
+
+      <!-- 7. GAP NPS -->
+      <tr data-area="RH">
+        <td><div class="status-dot s-y"></div></td>
+        <td><span class="td-area" style="color:#7080a8">RH</span></td>
+        <td class="td-metrica">GAP L-NPS x E-NPS<br><span style="font-size:9px;color:var(--soft)">Pertencimento via lideranças equipadas</span></td>
+        <td class="td-real c-y">41</td>
+        <td class="td-pct"><div class="tbar-wrap"><div class="tbar"><div class="tbar-f tbar-y" style="width:80%"></div></div><span class="c-y" style="font-size:10px;font-weight:700">80%</span></div></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">GAP = 15</strong></td>
+        
+        <td class="td-sem">—</td>
+        <td class="td-sem">51<br><span style="color:#dc2626">80%</span></td>
+        <td class="td-sem">38<br><strong class="c-g">103%</strong></td>
+        <td class="td-sem">41<br><span style="color:#d97706">80%</span></td>
+      </tr>
+
+      <!-- 8. Bem-estar -->
+      <tr data-area="RH">
+        <td><div class="status-dot s-n"></div></td>
+        <td><span class="td-area" style="color:#7080a8">RH</span></td>
+        <td class="td-metrica">Índice de bem-estar<br><span style="font-size:9px;color:var(--soft)">Gestão de saúde e bem-estar no trabalho</span></td>
+        <td class="td-real c-s">N/A</td>
+        <td class="td-pct"><span style="font-size:9px;color:var(--soft)">Não apurado</span></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">6,7</strong></td>
+        
+        <td class="td-sem">—</td><td class="td-sem">—</td><td class="td-sem">—</td><td class="td-sem">—</td>
+      </tr>
+
+      <!-- 9. Faturado/Faturável -->
+      <tr data-area="FINANCEIRO">
+        <td><div class="status-dot s-r"></div></td>
+        <td><span class="td-area" style="color:#dc2626">Financeiro</span></td>
+        <td class="td-metrica">Faturado / Faturável acumulado<br><span style="font-size:9px;color:var(--soft)">Garantir 100% faturado vs faturável</span></td>
+        <td class="td-real c-y">51,2%</td>
+        <td class="td-pct"><div class="tbar-wrap"><div class="tbar"><div class="tbar-f tbar-r" style="width:52%"></div></div><span style="color:#dc2626;font-size:10px;font-weight:700">52%</span></div></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">98% fat.</strong></td>
+        
+        <td class="td-sem">16%</td><td class="td-sem">41%</td><td class="td-sem">35%</td><td class="td-sem">51%</td>
+      </tr>
+
+      <!-- 10. Entrada caixa -->
+      <tr data-area="FINANCEIRO">
+        <td><div class="status-dot s-n"></div></td>
+        <td><span class="td-area" style="color:#dc2626">Financeiro</span></td>
+        <td class="td-metrica">Entrada de caixa acumulada<br><span style="font-size:9px;color:var(--soft)">Garantir 100% entrada de caixa</span></td>
+        <td class="td-real c-s">N/A</td>
+        <td class="td-pct"><span style="font-size:9px;color:var(--soft)">Não apurado</span></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">96%</strong></td>
+        
+        <td class="td-sem">—</td><td class="td-sem">—</td><td class="td-sem">—</td><td class="td-sem">—</td>
+      </tr>
+
+      <!-- 11. Gastos -->
+      <tr data-area="FINANCEIRO">
+        <td><div class="status-dot s-n"></div></td>
+        <td><span class="td-area" style="color:#dc2626">Financeiro</span></td>
+        <td class="td-metrica">Gastos / Faturado acumulado<br><span style="font-size:9px;color:var(--soft)">Controlar gastos em relação ao faturamento</span></td>
+        <td class="td-real c-s">TBD</td>
+        <td class="td-pct"><span style="font-size:9px;color:var(--soft)">Meta a definir</span></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">A definir</strong></td>
+        
+        <td class="td-sem">—</td><td class="td-sem">—</td><td class="td-sem">—</td><td class="td-sem">—</td>
+      </tr>
+
+      <!-- 12. WAU pesados IM -->
+      <tr data-area="IM">
+        <td><div class="status-dot s-n"></div></td>
+        <td><span class="td-area" style="color:#d97706">Int. de Mercado</span></td>
+        <td class="td-metrica">WAU — Acessos projetos pesados (OBAds)<br><span style="font-size:9px;color:var(--soft)">Uso recorrente OBAds pelos projetos pesados</span></td>
+        <td class="td-real c-s">—</td>
+        <td class="td-pct"><span style="font-size:9px;color:var(--soft)">Sem dado</span></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">1 projeto ativo</strong></td>
+        
+        <td class="td-sem">—</td><td class="td-sem">—</td><td class="td-sem">—</td><td class="td-sem">—</td>
+      </tr>
+
+      <!-- 13. Oportunidades IM -->
+      <tr data-area="IM">
+        <td><div class="status-dot s-g"></div></td>
+        <td><span class="td-area" style="color:#d97706">Int. de Mercado</span></td>
+        <td class="td-metrica">Oportunidades comerciais qualificadas (acum.)<br><span style="font-size:9px;color:var(--soft)">Gerar oportunidades p/ o comercial</span></td>
+        <td class="td-real c-g">4</td>
+        <td class="td-pct"><div class="tbar-wrap"><div class="tbar"><div class="tbar-f tbar-g" style="width:100%"></div></div><span class="c-g" style="font-size:10px;font-weight:700">133%</span></div></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">15 acumulado</strong></td>
+        
+        <td class="td-sem">0</td><td class="td-sem">0</td><td class="td-sem">0</td><td class="td-sem">4<br><small style="color:#64748b">COFAP KYB Valeo NGK</small></td>
+      </tr>
+
+      <!-- 14. Ultracar IM -->
+      <tr data-area="IM">
+        <td><div class="status-dot s-n"></div></td>
+        <td><span class="td-area" style="color:#d97706">Int. de Mercado</span></td>
+        <td class="td-metrica">Ultracar — clientes pagantes recorrentes<br><span style="font-size:9px;color:var(--soft)">Transformar Ultracar em produto recorrente</span></td>
+        <td class="td-real c-s">—</td>
+        <td class="td-pct"><span style="font-size:9px;color:var(--soft)">Meta final jul</span></td>
+        <td><strong class="td-meta-sem">2 clientes</strong></td>
+        
+        <td class="td-sem">—</td><td class="td-sem">—</td><td class="td-sem">—</td><td class="td-sem">—</td>
+      </tr>
+
+      <!-- 15. Comunidades 2 ações CRM -->
+      <tr data-area="CRM">
+        <td><div class="status-dot s-y"></div></td>
+        <td><span class="td-area" style="color:#d97706">CRM & Perf.</span></td>
+        <td class="td-metrica">Comunidades c/ média 2+ ações/user<br><span style="font-size:9px;color:var(--soft)">Estimular engajamento recorrente no ecossistema</span></td>
+        <td class="td-real c-y">3 / 5</td>
+        <td class="td-pct"><div class="tbar-wrap"><div class="tbar"><div class="tbar-f tbar-y" style="width:60%"></div></div><span class="c-y" style="font-size:10px;font-weight:700">60%</span></div></td>
+        <td><strong class="td-meta-sem">80% comunidades</strong></td>
+        
+        <td class="td-sem">—</td><td class="td-sem">—</td><td class="td-sem">2<br><span style="color:#dc2626">40%</span></td><td class="td-sem">3<br><span style="color:#d97706">60%</span></td>
+      </tr>
+
+      <!-- 16. Treinamentos sucesso CRM -->
+      <tr data-area="CRM">
+        <td><div class="status-dot s-y"></div></td>
+        <td><span class="td-area" style="color:#d97706">CRM & Perf.</span></td>
+        <td class="td-metrica">Taxa de sucesso dos treinamentos<br><span style="font-size:9px;color:var(--soft)">Treinamentos Educa relevantes ao reparador</span></td>
+        <td class="td-real c-y">4 / 6</td>
+        <td class="td-pct"><div class="tbar-wrap"><div class="tbar"><div class="tbar-f tbar-y" style="width:66.7%"></div></div><span class="c-y" style="font-size:10px;font-weight:700">67%</span></div></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">85% sucesso</strong></td>
+        
+        <td class="td-sem">—</td><td class="td-sem">—</td><td class="td-sem">2/2<br><strong class="c-g">100%</strong></td><td class="td-sem">4/6<br><span style="color:#d97706">67%</span></td>
+      </tr>
+
+      <!-- 17. Visitas Conecta CRM -->
+      <tr data-area="CRM">
+        <td><div class="status-dot s-y"></div></td>
+        <td><span class="td-area" style="color:#d97706">CRM & Perf.</span></td>
+        <td class="td-metrica">Visitantes/dia Conecta<br><span style="font-size:9px;color:var(--soft)">Principal escolha do reparador no Conecta</span></td>
+        <td class="td-real c-y">971/1.700/1.300</td>
+        <td class="td-pct"><span style="font-size:9px;color:var(--soft)">Sex 43% · Sáb 76% · Dom 58%</span></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">80% comunidades</strong></td>
+        
+        <td class="td-sem">—</td><td class="td-sem">—</td><td class="td-sem">304/468/363</td><td class="td-sem">971/1.700/1.300</td>
+      </tr>
+
+      <!-- 18. WAU OBAds -->
+      <tr data-area="TECH INDÚSTRIA">
+        <td><div class="status-dot s-g"></div></td>
+        <td><span class="td-area" style="color:var(--azul)">Tech Indústria</span></td>
+        <td class="td-metrica">WAU — Acessos semanais base elegível<br><span style="font-size:9px;color:var(--soft)">OBAds como SO da indústria para falar com reparador</span></td>
+        <td class="td-real c-g">25%</td>
+        <td class="td-pct"><div class="tbar-wrap"><div class="tbar"><div class="tbar-f tbar-g" style="width:100%"></div></div><span class="c-g" style="font-size:10px;font-weight:700">125%</span></div></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">30% WAU</strong></td>
+        
+        <td class="td-sem">—</td><td class="td-sem">16,7%<br><strong class="c-g">111%</strong></td><td class="td-sem">23%<br><strong class="c-g">153%</strong></td><td class="td-sem">25%<br><strong class="c-g">125%</strong></td>
+      </tr>
+
+      <!-- 19. IA indústrias -->
+      <tr data-area="TECH INDÚSTRIA">
+        <td><div class="status-dot s-r"></div></td>
+        <td><span class="td-area" style="color:var(--azul)">Tech Indústria</span></td>
+        <td class="td-metrica">Indústrias usando IA no mês<br><span style="font-size:9px;color:var(--soft)">Autonomia para campanhas e artigos com IA</span></td>
+        <td class="td-real c-r">0</td>
+        <td class="td-pct"><div class="tbar-wrap"><div class="tbar"><div class="tbar-f tbar-r" style="width:0%"></div></div><span style="color:#dc2626;font-size:10px;font-weight:700">0%</span></div></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">5 indústrias</strong></td>
+        
+        <td class="td-sem">—</td><td class="td-sem">—</td><td class="td-sem">0<br><span style="color:#dc2626">0%</span></td><td class="td-sem">0<br><span style="color:#dc2626">0%</span></td>
+      </tr>
+
+      <!-- 20. Ultracar Tech Ind -->
+      <tr data-area="TECH INDÚSTRIA">
+        <td><div class="status-dot s-n"></div></td>
+        <td><span class="td-area" style="color:var(--azul)">Tech Indústria</span></td>
+        <td class="td-metrica">Ultracar — clientes pagantes recorrentes<br><span style="font-size:9px;color:var(--soft)">Produto recorrente e escalável</span></td>
+        <td class="td-real c-s">—</td>
+        <td class="td-pct"><span style="font-size:9px;color:var(--soft)">Meta final jul</span></td>
+        <td><strong class="td-meta-sem">2 clientes</strong></td>
+        
+        <td class="td-sem">—</td><td class="td-sem">—</td><td class="td-sem">—</td><td class="td-sem">—</td>
+      </tr>
+
+      <!-- 21. MAU Reparadores -->
+      <tr data-area="REPARADORES">
+        <td><div class="status-dot s-g"></div></td>
+        <td><span class="td-area" style="color:var(--turq)">Reparadores</span></td>
+        <td class="td-metrica">MAU — Usuários logados ativos mensalmente<br><span style="font-size:9px;color:var(--soft)">Engajamento recorrente na plataforma</span></td>
+        <td class="td-real c-g">47,5%</td>
+        <td class="td-pct"><div class="tbar-wrap"><div class="tbar"><div class="tbar-f tbar-g" style="width:100%"></div></div><span class="c-g" style="font-size:10px;font-weight:700">104%</span></div></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">50% MAU</strong></td>
+        
+        <td class="td-sem">—</td><td class="td-sem">—</td><td class="td-sem">58,8%<br><strong class="c-g">132%</strong></td><td class="td-sem">47,5%<br><strong class="c-g">104%</strong></td>
+      </tr>
+
+      <!-- 22. Comunidades 2 ações Reparadores -->
+      <tr data-area="REPARADORES">
+        <td><div class="status-dot s-y"></div></td>
+        <td><span class="td-area" style="color:var(--turq)">Reparadores</span></td>
+        <td class="td-metrica">Comunidades c/ 2+ ações/user<br><span style="font-size:9px;color:var(--soft)">Engajamento em comunidades</span></td>
+        <td class="td-real c-y">4 / 6</td>
+        <td class="td-pct"><div class="tbar-wrap"><div class="tbar"><div class="tbar-f tbar-y" style="width:66.7%"></div></div><span class="c-y" style="font-size:10px;font-weight:700">67%</span></div></td>
+        <td><strong class="td-meta-sem">80% comunidades</strong></td>
+        
+        <td class="td-sem">—</td><td class="td-sem">—</td><td class="td-sem">2<br><span style="color:#dc2626">40%</span></td><td class="td-sem">4<br><span style="color:#d97706">67%</span></td>
+      </tr>
+
+      <!-- 23. Health Score Reparadores -->
+      <tr data-area="REPARADORES">
+        <td><div class="status-dot s-n"></div></td>
+        <td><span class="td-area" style="color:var(--turq)">Reparadores</span></td>
+        <td class="td-metrica">Health Score completo<br><span style="font-size:9px;color:var(--soft)">Qualidade da base de reparadores</span></td>
+        <td class="td-real c-s">N/A</td>
+        <td class="td-pct"><span style="font-size:9px;color:var(--soft)">Não apurado</span></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">60%</strong></td>
+        
+        <td class="td-sem">—</td><td class="td-sem">67,8%</td><td class="td-sem">67,9%</td><td class="td-sem">—</td>
+      </tr>
+
+      <!-- 24. Retenção D7 -->
+      <tr data-area="TECH NOVOS">
+        <td><div class="status-dot s-y"></div></td>
+        <td><span class="td-area" style="color:var(--azul)">Tech Nov. Neg.</span></td>
+        <td class="td-metrica">Retenção de usuários D7<br><span style="font-size:9px;color:var(--soft)">Plataforma como ativo estratégico</span></td>
+        <td class="td-real c-y">10%</td>
+        <td class="td-pct"><div class="tbar-wrap"><div class="tbar"><div class="tbar-f tbar-y" style="width:62.5%"></div></div><span class="c-y" style="font-size:10px;font-weight:700">63%</span></div></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">20% retenção</strong></td>
+        
+        <td class="td-sem">11%<br><strong class="c-g">100%</strong></td><td class="td-sem">21%<br><strong class="c-g">162%</strong></td><td class="td-sem">15,5%<br><strong class="c-g">103%</strong></td><td class="td-sem">10%<br><span style="color:#d97706">63%</span></td>
+      </tr>
+
+      <!-- 25. Manuais pagos -->
+      <tr data-area="TECH NOVOS">
+        <td><div class="status-dot s-r"></div></td>
+        <td><span class="td-area" style="color:var(--azul)">Tech Nov. Neg.</span></td>
+        <td class="td-metrica">Reparadores no plano pago dos manuais<br><span style="font-size:9px;color:var(--soft)">Plataforma de manuais técnicos relevante</span></td>
+        <td class="td-real c-r">0</td>
+        <td class="td-pct"><div class="tbar-wrap"><div class="tbar"><div class="tbar-f tbar-r" style="width:0%"></div></div><span style="color:#dc2626;font-size:10px;font-weight:700">0%</span></div></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">100 usuários</strong></td>
+        
+        <td class="td-sem">—</td><td class="td-sem">0</td><td class="td-sem">0</td><td class="td-sem">0</td>
+      </tr>
+
+      <!-- 26. Visitantes Conecta Tech -->
+      <tr data-area="TECH NOVOS">
+        <td><div class="status-dot s-y"></div></td>
+        <td><span class="td-area" style="color:var(--azul)">Tech Nov. Neg.</span></td>
+        <td class="td-metrica">Visitantes/dia Conecta<br><span style="font-size:9px;color:var(--soft)">Principal escolha do reparador no Conecta</span></td>
+        <td class="td-real c-y">971/1.700/1.300</td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">2.250 / dia</strong></td>
+        <td class="td-pct"><span style="font-size:9px;color:var(--soft)">Sex 43% · Sáb 76% · Dom 58%</span></td>
+        
+        
+        <td class="td-sem">—</td><td class="td-sem">—</td><td class="td-sem">304/468/363</td><td class="td-sem">971/1.700/1.300</td>
+      </tr>
+
+      <!-- 27. Visualizações -->
+      <tr data-area="CONTENT">
+        <td><div class="status-dot s-r"></div></td>
+        <td><span class="td-area" style="color:#7080a8">Content</span></td>
+        <td class="td-metrica">Visualizações totais redes sociais (acum.)<br><span style="font-size:9px;color:var(--soft)">1ª opção do reparador na busca</span></td>
+        <td class="td-real c-y">581k</td>
+        <td class="td-pct"><div class="tbar-wrap"><div class="tbar"><div class="tbar-f tbar-r" style="width:55.4%"></div></div><span style="color:#dc2626;font-size:10px;font-weight:700">55%</span></div></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">2,1M views</strong></td>
+        
+        <td class="td-sem">—</td><td class="td-sem">197k<br><span style="color:#dc2626">56%</span></td><td class="td-sem">446k<br><span style="color:#d97706">64%</span></td><td class="td-sem">582k<br><span style="color:#d97706">55%</span></td>
+      </tr>
+
+      <!-- 28. Seguidores -->
+      <tr data-area="CONTENT">
+        <td><div class="status-dot s-y"></div></td>
+        <td><span class="td-area" style="color:#7080a8">Content</span></td>
+        <td class="td-metrica">Seguidores totais (Insta + YouTube + TikTok)<br><span style="font-size:9px;color:var(--soft)">Crescer base de seguidores oficiais</span></td>
+        <td class="td-real c-r">141.336</td>
+        <td class="td-pct"><div class="tbar-wrap"><div class="tbar"><div class="tbar-f tbar-y" style="width:87.8%"></div></div><span style="color:#dc2626;font-size:10px;font-weight:700">87,8%</span></div></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">178.994 (+30%)</strong></td>
+        
+        <td class="td-sem">—</td><td class="td-sem">136.560<br><span style="color:#d97706">96,8%</span></td><td class="td-sem">139.585<br><span style="color:#d97706">95,1%</span></td><td class="td-sem">141.336<br><span style="color:#dc2626">87,8%</span></td>
+      </tr>
+
+      <!-- 29. Visitantes Conecta Content -->
+      <tr data-area="CONTENT">
+        <td><div class="status-dot s-y"></div></td>
+        <td><span class="td-area" style="color:#7080a8">Content</span></td>
+        <td class="td-metrica">Visitantes/dia Conecta — compartilhada<br><span style="font-size:9px;color:var(--soft)">Frequência de visitantes Conecta</span></td>
+        <td class="td-real c-y">971/1.700/1.300</td>
+        <td class="td-pct"><span style="font-size:9px;color:var(--soft)">Sex 43% · Sáb 76% · Dom 58%</span></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">2.250 / dia</strong></td>
+        
+        <td class="td-sem">—</td><td class="td-sem">—</td><td class="td-sem">304/468/363</td><td class="td-sem">971/1.700/1.300</td>
+      </tr>
+
+      <!-- 30. Nível serviço PV -->
+      <tr data-area="PÓS-VENDA">
+        <td><div class="status-dot s-g"></div></td>
+        <td><span class="td-area" style="color:var(--turq)">Pós-Venda</span></td>
+        <td class="td-metrica">Nível de serviço (80% em 30 seg.)<br><span style="font-size:9px;color:var(--soft)">SLA de atendimento ao reparador</span></td>
+        <td class="td-real c-g">80%</td>
+        <td class="td-pct"><div class="tbar-wrap"><div class="tbar"><div class="tbar-f tbar-g" style="width:100%"></div></div><span class="c-g" style="font-size:10px;font-weight:700">107%</span></div></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">80% em 30s</strong></td>
+        
+        <td class="td-sem">64%<br><strong class="c-g">107%</strong></td><td class="td-sem">82,7%<br><strong class="c-g">127%</strong></td><td class="td-sem">80%<br><strong class="c-g">114%</strong></td><td class="td-sem">75%<br><strong class="c-g">107%</strong></td>
+      </tr>
+
+      <!-- 31. Taxa abandono -->
+      <tr data-area="PÓS-VENDA">
+        <td><div class="status-dot s-g"></div></td>
+        <td><span class="td-area" style="color:var(--turq)">Pós-Venda</span></td>
+        <td class="td-metrica">Taxa de abandono (quanto menor melhor)<br><span style="font-size:9px;color:var(--soft)">Reduzir abandono de chamadas</span></td>
+        <td class="td-real c-g">9%</td>
+        <td class="td-pct"><div class="tbar-wrap"><div class="tbar"><div class="tbar-f tbar-g" style="width:100%"></div></div><span class="c-g" style="font-size:10px;font-weight:700">133%</span></div></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">≤ 10%</strong></td>
+        
+        <td class="td-sem">31%<br><span style="color:#dc2626">71%</span></td><td class="td-sem">3%<br><strong class="c-g">667%</strong></td><td class="td-sem">5,2%<br><strong class="c-g">286%</strong></td><td class="td-sem">9%<br><strong class="c-g">133%</strong></td>
+      </tr>
+
+      <!-- 32. SLA manual PV -->
+      <tr data-area="PÓS-VENDA">
+        <td><div class="status-dot s-y"></div></td>
+        <td><span class="td-area" style="color:var(--turq)">Pós-Venda</span></td>
+        <td class="td-metrica">SLA produção de manual por solicitação<br><span style="font-size:9px;color:var(--soft)">Manual padronizado e atualizado</span></td>
+        <td class="td-real c-y">58%</td>
+        <td class="td-pct"><div class="tbar-wrap"><div class="tbar"><div class="tbar-f tbar-y" style="width:72.5%"></div></div><span class="c-y" style="font-size:10px;font-weight:700">72,5%</span></div></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">90% em 4h</strong></td>
+        
+        <td class="td-sem">—</td><td class="td-sem">—</td><td class="td-sem">58%<br><span style="color:#d97706">77%</span></td><td class="td-sem">58%<br><span style="color:#d97706">73%</span></td>
+      </tr>
+
+      <!-- 33. Custo Conecta -->
+      <tr data-area="EVENTOS">
+        <td><div class="status-dot s-g"></div></td>
+        <td><span class="td-area" style="color:#7080a8">Eventos</span></td>
+        <td class="td-metrica">Custo máximo proporcional à receita<br><span style="font-size:9px;color:var(--soft)">Sustentabilidade financeira do Conecta</span></td>
+        <td class="td-real c-g">R$7,82M</td>
+        <td class="td-pct"><div class="tbar-wrap"><div class="tbar"><div class="tbar-f tbar-g" style="width:100%"></div></div><span class="c-g" style="font-size:10px;font-weight:700">100%</span></div></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">≤ R$ 7,5M</strong></td>
+        
+        <td class="td-sem">—</td><td class="td-sem">R$8,3M<br><strong class="c-g">102%</strong></td><td class="td-sem">R$7,9M<br><strong class="c-g">101%</strong></td><td class="td-sem">R$7,82M<br><strong class="c-g">100%</strong></td>
+      </tr>
+
+      <!-- 34. Visitas Conecta Eventos -->
+      <tr data-area="EVENTOS">
+        <td><div class="status-dot s-y"></div></td>
+        <td><span class="td-area" style="color:#7080a8">Eventos</span></td>
+        <td class="td-metrica">Visitas únicas/dia Conecta<br><span style="font-size:9px;color:var(--soft)">2.250 visitas mínimas em cada dia do evento</span></td>
+        <td class="td-real c-y">971/1.700/1.300</td>
+        <td class="td-pct"><span style="font-size:9px;color:var(--soft)">Sex 43% · Sáb 76% · Dom 58%</span></td>
+        <td><strong class="td-meta-sem">2.250/dia</strong></td>
+        
+        <td class="td-sem">—</td><td class="td-sem">—</td><td class="td-sem">304/468/363</td><td class="td-sem">971/1.700/1.300</td>
+      </tr>
+
+      <!-- 35. Renovação Conecta -->
+      <tr data-area="EVENTOS">
+        <td><div class="status-dot s-g"></div></td>
+        <td><span class="td-area" style="color:#7080a8">Eventos</span></td>
+        <td class="td-metrica">Renovação de patrocinadores — Conecta<br><span style="font-size:9px;color:var(--soft)">Motivar continuidade e evolução do patrocinador</span></td>
+        <td class="td-real c-g">63%</td>
+        <td class="td-pct"><div class="tbar-wrap"><div class="tbar"><div class="tbar-f tbar-g" style="width:90%"></div></div><span class="c-g" style="font-size:10px;font-weight:700">90%</span></div></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">70%</strong></td>
+        
+        <td class="td-sem">38%<br><span style="color:#d97706">95%</span></td><td class="td-sem">52%<br><strong class="c-g">104%</strong></td><td class="td-sem">56%<br><span style="color:#d97706">86%</span></td><td class="td-sem">63%<br><strong class="c-g">90%</strong></td>
+      </tr>
+
+      <!-- 36. Retorno Educa -->
+      <tr data-area="EVENTOS">
+        <td><div class="status-dot s-g"></div></td>
+        <td><span class="td-area" style="color:#7080a8">Eventos</span></td>
+        <td class="td-metrica">Reparadores retornando 2+ vezes — Educa<br><span style="font-size:9px;color:var(--soft)">Gerar alto desejo de participar do Educa</span></td>
+        <td class="td-real c-g">23%</td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">27%</strong></td>
+        <td class="td-pct"><div class="tbar-wrap"><div class="tbar"><div class="tbar-f tbar-g" style="width:100%"></div></div><span class="c-g" style="font-size:10px;font-weight:700">153%</span></div></td>
+        
+        
+        <td class="td-sem">—</td><td class="td-sem">—</td><td class="td-sem">14%<br><strong class="c-g">140%</strong></td><td class="td-sem">23%<br><strong class="c-g">153%</strong></td>
+      </tr>
+
+      <!-- 37. Distribuidores Educa -->
+      <tr data-area="EVENTOS">
+        <td><div class="status-dot s-r"></div></td>
+        <td><span class="td-area" style="color:#7080a8">Eventos</span></td>
+        <td class="td-metrica">Distribuidores c/ crescimento de vendas pós-Educa<br><span style="font-size:9px;color:var(--soft)">Demonstrar impacto do Educa na indústria</span></td>
+        <td class="td-real c-r">0%</td>
+        <td class="td-pct"><div class="tbar-wrap"><div class="tbar"><div class="tbar-f tbar-r" style="width:0%"></div></div><span style="color:#dc2626;font-size:10px;font-weight:700">0%</span></div></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">25%</strong></td>
+        
+        <td class="td-sem">—</td><td class="td-sem">—</td><td class="td-sem">—</td><td class="td-sem">0%</td>
+      </tr>
+
+      <!-- 38. Renovação Educa -->
+      <tr data-area="EVENTOS">
+        <td><div class="status-dot s-g"></div></td>
+        <td><span class="td-area" style="color:#7080a8">Eventos</span></td>
+        <td class="td-metrica">Renovação de patrocinadores — Educa<br><span style="font-size:9px;color:var(--soft)">Motivar continuidade no produto Educa</span></td>
+        <td class="td-real c-g">67%</td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">70%</strong></td>
+        <td class="td-pct"><div class="tbar-wrap"><div class="tbar"><div class="tbar-f tbar-g" style="width:100%"></div></div><span class="c-g" style="font-size:10px;font-weight:700">112%</span></div></td>
+        
+        
+        <td class="td-sem">25%<br><strong class="c-g">100%</strong></td><td class="td-sem">36%<br><strong class="c-g">120%</strong></td><td class="td-sem">67%<br><strong class="c-g">134%</strong></td><td class="td-sem">67%<br><strong class="c-g">112%</strong></td>
+      </tr>
+
+      <!-- 39. Renovação contratos Comercial -->
+      <tr data-area="COMERCIAL">
+        <td><div class="status-dot s-r"></div></td>
+        <td><span class="td-area" style="color:#dc2626">Comercial</span></td>
+        <td class="td-metrica">Renovação de contratos — clientes principais<br><span style="font-size:9px;color:var(--soft)">Renovar 80% dos clientes principais</span></td>
+        <td class="td-real c-y">31 / 40</td>
+        <td class="td-pct"><div class="tbar-wrap"><div class="tbar"><div class="tbar-f tbar-y" style="width:77.5%"></div></div><span class="c-y" style="font-size:10px;font-weight:700">77,5%</span></div></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">40 clientes</strong></td>
+        
+        <td class="td-sem">—</td><td class="td-sem">—</td><td class="td-sem">23<br><strong class="c-g">153%</strong></td><td class="td-sem">8<br><span style="color:#dc2626">57%</span></td>
+      </tr>
+
+      <!-- 40. Venda comunidades -->
+      <tr data-area="COMERCIAL">
+        <td><div class="status-dot s-r"></div></td>
+        <td><span class="td-area" style="color:#dc2626">Comercial</span></td>
+        <td class="td-metrica">Vendas de comunidades<br><span style="font-size:9px;color:var(--soft)">Vender 10 comunidades no semestre</span></td>
+        <td class="td-real c-r">0 (abr)</td>
+        <td class="td-pct"><div class="tbar-wrap"><div class="tbar"><div class="tbar-f tbar-r" style="width:50%"></div></div><span style="color:#dc2626;font-size:10px;font-weight:700">5/10 acum.</span></div></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">10 comunidades</strong></td>
+        
+        <td class="td-sem">1</td><td class="td-sem">2</td><td class="td-sem">2<br><span style="color:#d97706">67%</span></td><td class="td-sem">0<br><span style="color:#dc2626">0%</span></td>
+      </tr>
+
+      <!-- 41. IPEE CSM -->
+      <tr data-area="CSM">
+        <td><div class="status-dot s-g"></div></td>
+        <td><span class="td-area" style="color:var(--azul)">CSM</span></td>
+        <td class="td-metrica">IPEE — Índice de Potencial de Expansão<br><span style="font-size:9px;color:var(--soft)">Identificar oportunidades de expansão</span></td>
+        <td class="td-real c-g">3</td>
+        <td class="td-pct"><div class="tbar-wrap"><div class="tbar"><div class="tbar-f tbar-g" style="width:100%"></div></div><span class="c-g" style="font-size:10px;font-weight:700">100%</span></div></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">20 acumulado</strong></td>
+        
+        <td class="td-sem">—</td><td class="td-sem">3<br><strong class="c-g">100%</strong></td><td class="td-sem">2<br><span style="color:#d97706">67%</span></td><td class="td-sem">3<br><strong class="c-g">100%</strong></td>
+      </tr>
+
+      <!-- 42. NRR CSM -->
+      <tr data-area="CSM">
+        <td><div class="status-dot s-g"></div></td>
+        <td><span class="td-area" style="color:var(--azul)">CSM</span></td>
+        <td class="td-metrica">Taxa de retenção antecipada / NRR<br><span style="font-size:9px;color:var(--soft)">Retenção proativa como processo escalável</span></td>
+        <td class="td-real c-g">45%</td>
+        <td class="td-pct"><div class="tbar-wrap"><div class="tbar"><div class="tbar-f tbar-g" style="width:100%"></div></div><span class="c-g" style="font-size:10px;font-weight:700">113%</span></div></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">55%</strong></td>
+        
+        <td class="td-sem">—</td><td class="td-sem">32%<br><strong class="c-g">107%</strong></td><td class="td-sem">37%<br><strong class="c-g">106%</strong></td><td class="td-sem">45%<br><strong class="c-g">113%</strong></td>
+      </tr>
+
+      <!-- 43. Taxa adoção CSM -->
+      <tr data-area="CSM">
+        <td><div class="status-dot s-r"></div></td>
+        <td><span class="td-area" style="color:var(--azul)">CSM</span></td>
+        <td class="td-metrica">Taxa de adoção e engajamento na jornada<br><span style="font-size:9px;color:var(--soft)">OFBR no fluxo operacional da indústria</span></td>
+        <td class="td-real c-r">10%</td>
+        <td class="td-pct"><div class="tbar-wrap"><div class="tbar"><div class="tbar-f tbar-r" style="width:58.8%"></div></div><span style="color:#dc2626;font-size:10px;font-weight:700">59%</span></div></td>
+        <td><strong style="font-size:10.5px;color:var(--azul)">30%</strong></td>
+        
+        <td class="td-sem">—</td><td class="td-sem">17%<br><strong class="c-g">113%</strong></td><td class="td-sem">23%<br><strong class="c-g">153%</strong></td><td class="td-sem">10%<br><span style="color:#dc2626">59%</span></td>
+      </tr>
+
+    </tbody>
+  </table>
+  </div><!-- /table-scroll -->
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p><strong>Oficina Brasil</strong> &nbsp;·&nbsp; OKR Dashboard 1S26 V6 &nbsp;·&nbsp; Resultados até Abril 2026 &nbsp;·&nbsp; Uso interno — Reunião de Liderança</p>
+  <p>Identidade: Guia de Marca OFBR v01 &nbsp;·&nbsp; Fonte: Consolidado · OFBR_Planejamento_1s26 · <strong>Última atualização: Abril 2026</strong></p>
+</div>
+
+<script>
+// ─── VIEW SWITCHING ───
+function setView(v) {
+  var tabs = document.querySelectorAll('.vtab');
+  for (var i = 0; i < tabs.length; i++) { tabs[i].classList.remove('vactive'); }
+  for (var i = 0; i < tabs.length; i++) {
+    var txt = tabs[i].innerText || tabs[i].textContent || '';
+    if ((v === 'painel' && txt.indexOf('Painel') !== -1) ||
+        (v === 'tabela' && txt.indexOf('Tabela') !== -1)) {
+      tabs[i].classList.add('vactive');
+    }
+  }
+  var painel = document.getElementById('painel-view');
+  var tabela = document.getElementById('tabela-view');
+  if (painel) painel.style.display = v === 'painel' ? '' : 'none';
+  if (tabela) tabela.style.display = v === 'tabela' ? 'block' : 'none';
+}
+
+// ─── AREA FILTER ───
+function filterArea(area) {
+  document.querySelectorAll('.af-btn').forEach(b => b.classList.remove('af-active'));
+  event.target.classList.add('af-active');
+  document.querySelectorAll('#okr-tbody tr').forEach(tr => {
+    const trArea = tr.getAttribute('data-area') || '';
+    if (area === 'TODAS') {
+      tr.classList.remove('tr-hidden');
+    } else {
+      tr.classList.toggle('tr-hidden', !trArea.toUpperCase().includes(area.toUpperCase()));
+    }
+  });
+}
+</script>
+</body>
+</html>
